@@ -1,0 +1,10 @@
+.divApp{
+    background-image: url(../public//imagenes/fondoPagina2.jpg);
+    background-color: aqua;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: justify;  
+    background-position: center center;
+}
