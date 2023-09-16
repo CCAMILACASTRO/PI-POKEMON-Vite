@@ -15,7 +15,7 @@ const postPokemon = async (createPokemon) => {  //me llega por body , en forma d
     }
 
     const pokemonExist = await Pokemon.findOne({ 
-        where: { name }
+        where: { name: name }
     });
 
     if (pokemonExist) {   //verifica si el pokemon existe en la base de datos.

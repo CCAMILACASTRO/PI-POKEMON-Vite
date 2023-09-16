@@ -6,7 +6,7 @@ const URL = 'https://pokeapi.co/api/v2/pokemon/'
 const getPokemonApiByName = async (name) => {
 
     try{
-        const pokemonsApiName = await axios.get(`${URL}/${name}`);
+        const pokemonsApiName = await axios.get(`${URL}/${name}`.toLowerCase()); //insensible a mayusculas o minusculas
 
         if (pokemonsApiName) { //Si la respuesta de la api fue exitosa...
 
@@ -36,9 +36,10 @@ const getPokemonApiByName = async (name) => {
 
 const getPokemonDbByName = async(name) => {
     try{
-        const pokemonDbName = await Pokemon.findOne({ //busco en el modelo Pokemon por nombre
+        const pokemonDbName = await Pokemon.findAll({ //busco en el modelo Pokemon por nombre
             where: {
-                name: name.toLowerCase(), // Convertimos el nombre a minúsculas
+                name: name.toLowerCase(), // insensible a mayusculas y minusculas.
+                
               },
               include: {
                 attributes: ["name"], //incluye informacion del modelo Type.
