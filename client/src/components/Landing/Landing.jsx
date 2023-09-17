@@ -7,7 +7,7 @@ const Landing = () => {
     return (
         <div className= {styles.divLanding}>
             
-            <h1>Bienvenidos al Mundo Pokemóm...!</h1>
+            <h1 className={styles.tituloLanding}>Bienvenidos al Mundo Pokemóm...!</h1>
 
             <Link to='/pokemons'>
                 <button className= {styles.botonLanding}>INGRESAR</button>

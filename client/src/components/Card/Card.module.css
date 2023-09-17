@@ -1,0 +1,47 @@
+.divCard{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    align-items: center;
+    padding: 15px;
+    width: 25%;
+    height: 40%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-style:groove ;
+    border-color: rgb(0, 102, 26);
+    background-color: rgb(0, 250, 62);
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px 0px rgb(0, 43, 11);
+
+}
+
+.divTiposCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 40px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(114, 255, 149);
+}
+
+.buttonCard{
+    background-color: rgb(255, 187, 0);
+    color: rgb(0, 89, 255);
+    width: auto;
+    height: auto;
+    padding: 5px;
+    margin: 10px;
+    font-weight: bold;
+    font-size: small;
+}
+
+
+.buttonCard:hover{
+    background-color:rgb(41, 184, 136);
+    color: rgb(248, 244, 4);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+}

@@ -1,0 +1,59 @@
+.divSearchBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+}
+
+.inputSearchBar{
+    border: 0;
+    border-radius: 10px 0px 0px 10px;
+    height: 30px;
+    background-color:  rgb(248, 246, 100);
+    width: 200px;
+    margin: 5px;
+    padding-left: 10px;
+}
+
+.inputSearchBar:hover{
+    background-color: rgb(156, 250, 219);
+    border: solid rgb(248, 246, 100);
+}
+
+.buttonSearchBar{
+    border-radius: 0px 10px 10px 0px;
+    width: auto;
+    height: auto;
+    font-size: smaller;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    background-color: rgb(255, 187, 0);
+    color: rgb(0, 89, 255);
+}
+
+.buttonSearchBar:hover{
+    background-color:rgb(41, 184, 136);
+    color: rgb(248, 246, 100);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 768px) {
+    .buttonSearchBar{
+        width: 70px;
+        height: 35px;
+        margin: 0px;
+        padding: 2px;
+        text-align: center;
+        font-size: small;
+        border-radius: 0px 10px 10px 0px;
+    } 
+    .inputSearchBar {
+        width: 70%;
+        margin: 2px;
+        height: 32px;
+        padding-left: 5px;
+        border-radius: 10px 0px 0px 10px;
+    }
+}

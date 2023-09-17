@@ -2,24 +2,22 @@
     background-image: url(../public/imagenes/fondoLanding5.jpg);
     width: 100vw;
     height: 100vh; 
+    margin-left: auto;
+    margin-right: auto;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    margin-left: auto;
-    margin-right: auto;
     margin-bottom: 100px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     text-align: center;
     align-items: center;
-    overflow: auto;  
 }
 
 
-h1{
-    margin: 30px;
-    padding: 10px;
+.tituloLanding{
+    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 45px;
     color: rgb(183, 8, 236);
     display:block;
     font-family: monospace;
@@ -40,9 +38,33 @@ h1{
     
 }
 
+@media (max-width: 768px) {
+    .tituloLanding {
+        font-size: 1.5rem; 
+        margin:0;
+    }
+    .divLanding{
+        background-image: url(../public/imagenes/fondoLanding2.jpg);
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        background-size: contain;
+        background-color: black;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }   
+    .botonLanding {
+        margin: 0;
+        padding: 10px 10px;
+        overflow: auto;
+    } 
+}
+
 
 .botonLanding{
     margin-top: 350px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: black;
     position: relative;
     padding: 20px 20px;
@@ -57,7 +79,7 @@ h1{
 
 .botonLanding:hover{
     background-color: deeppink;
-    color: black;;
+    color: aqua;
     box-shadow: 0 0 5px deeppink,
                 0 0 25px deeppink,
                 0 0 50px deeppink,
