@@ -7,16 +7,16 @@
     text-align: center;  
     background-position: center center;
     font-family: Arial, Helvetica, sans-serif;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .formDiv {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: rgb(255, 166, 0, 0.75);
+    background-color: rgb(255, 166, 0, 0.25);
     width: 80vw;
-    height: 75vh;
+    height: 70vh;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
@@ -65,9 +65,9 @@ input {
     background-color: rgb(255, 102, 0);
     color: rgb(35, 0, 92);
     width: auto;
-    height: 40px;
+    height: 45px;
     padding: 8px;
-    font-weight: bold;
+    font-weight: bold ;
     font-size: smaller;
     margin: 10px;
     

@@ -7,49 +7,49 @@ const Form = () => {
     return (
 
         <div class={styles.divForms}>
-            <h2>Creá tu propio Pokemon: </h2>
+            <h2>Crea tu propio Pokemon: </h2>
 
             <form className={styles.formDiv} onSubmit="">
             <div className={styles.divInputsForm}>
             
                 <div className={styles.divInputsForm}>
                     <label htmlFor="name">Nombre: </label>
-                    <input type="text" name="name" placeholder="Nombre" value="" onChange=""/>
+                    <input type="text" name="name" placeholder="Nombre" value="" />
                 </div>
 
                 <div className={styles.divInputsForm}>
                     <label htmlFor="image">Imágen: </label>
-                    <input type="text" name="image" placeholder="Imagen" value="" onChange=""/>
+                    <input type="text" name="image" placeholder="Imagen" value="" />
                 </div>
 
                 <div className={styles.divInputsForm}>
                     <label htmlFor="life">Vida: </label>
-                    <input type="number" name="life" placeholder="Vida" value="" onChange="" />
+                    <input type="number" name="life" placeholder="Vida" value="" />
                 </div>
 
                 <div className={styles.divInputsForm}>
                     <label htmlFor="attack">Ataque: </label>
-                    <input type="number" name="attack" placeholder="Ataque" value="" onChange="" />
+                    <input type="number" name="attack" placeholder="Ataque" value="" />
                 </div>
 
                 <div className={styles.divInputsForm}>
                     <label htmlFor="defense">Defensa: </label>
-                    <input type="number" name="defense" placeholder="Defensa" value="" onChange="" />
+                    <input type="number" name="defense" placeholder="Defensa" value="" />
                 </div>
 
                 <div className={styles.divInputsForm}>
                 <label htmlFor="speed">Velocidad: </label>
-                    <input type="number" name="speed" placeholder="Velocidad" value="" onChange="" />
+                    <input type="number" name="speed" placeholder="Velocidad" value="" />
                 </div>
 
                 <div className={styles.divInputsForm}>
                     <label htmlFor="height">Altura: </label>
-                    <input type="number" name="height" placeholder="Altura" value="" onChange="" />
+                    <input type="number" name="height" placeholder="Altura" value="" />
                 </div>
 
                 <div className={styles.divInputsForm}>
                     <label htmlFor="weight">Peso: </label>
-                    <input type="number" name="weight" placeholder="Peso" value="" onChange="" />
+                    <input type="number" name="weight" placeholder="Peso" value="" />
                 </div>
 
             </div>

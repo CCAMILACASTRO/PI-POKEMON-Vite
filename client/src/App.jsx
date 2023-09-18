@@ -15,8 +15,6 @@ function App() {
 
   return (
 
-    //RENDERIZADO CONDICIONAL DE LA NAV PARA QUE APAREZCA EN TODAS LAS PAGINAS
-
     <div className= {styles.divApp}>
       
       {pathname !== "/" && <Nav  />}
