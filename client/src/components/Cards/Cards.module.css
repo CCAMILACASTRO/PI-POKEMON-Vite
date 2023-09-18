@@ -1,8 +1,9 @@
 .divCards{
-    padding-top: 10px;
-    width: 100vw;
+    width: 95vw;
     height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
-
+    display: grid;
+    grid-template-columns: repeat(4, 20%);
+    grid-template-rows: repeat(4,60%);
+    column-gap: 30px;
+    justify-content: center;
 }

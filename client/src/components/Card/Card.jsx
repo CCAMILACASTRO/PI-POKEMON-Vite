@@ -9,10 +9,10 @@ const Card = (props) => {
         <div className={styles.divCard} >
 
             <img className={styles.imgCard} src={props.image} alt={props.name}/>
-            <h3 className={styles.nameCard}>Nombre: {props.name} </h3>
+            <h4 className={styles.nameCard}>Nombre: {props.name} </h4>
             <div className={styles.divTiposCard}>
-                <h4 className={styles.typeCard}>Tipo: {props.type[0]} </h4>
-                <h4 className={styles.typeCard}>Tipo: {props.type[1]} </h4> 
+                <h5 className={styles.typeCard}>Tipo: {props.types} </h5>
+                <h5 className={styles.typeCard}>Tipo: {props.types} </h5> 
             </div>
 
             <Link to={`/pokemons/detail/${props.id}`} >

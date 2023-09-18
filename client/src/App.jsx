@@ -26,7 +26,7 @@ function App() {
         
         <Route path="/pokemons" element={<Home/> }></Route>
         
-        <Route path="/pokemons/detail/1" element={<Detail/> } ></Route> 
+        <Route path="/pokemons/detail/:id" element={<Detail/> } ></Route> 
 
         <Route path="/pokemons/create" element={<Form/> }></Route>
 

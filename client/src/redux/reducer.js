@@ -27,7 +27,7 @@ const reducer = (state= initialState, action) => {
         case GET_POKEMONS:
             return {
                 ...state,
-                pokemon: action.payload,
+                //pokemon: action.payload,
                 allPokemons: action.payload,
             }
         case GET_POKEMON_ID:

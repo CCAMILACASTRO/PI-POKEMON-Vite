@@ -15,13 +15,15 @@ const Cards = () => {
     return (
         <div className={styles.divCards}>
            { allPokemons.map((pokemon) => {
+            return (
                 <Card
                 key={pokemon.id}
                 id={pokemon.id}
                 name={pokemon.name}
                 image={pokemon.image}
                 type={pokemon.type}
-                />
+            />
+            )
             })}
         </div>
     )
