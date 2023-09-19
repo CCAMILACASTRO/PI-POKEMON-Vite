@@ -1,10 +1,47 @@
-import React from 'react'
+import React from 'react';
 import styles from './Nav.module.css';
 import SearchBar from '../SearchBar/SearchBar';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllTypes, filterCreated, sortByName, sortByAttack, filterType } from '../../redux/actions'
 
 
 const Nav = () => {
+
+    const dispatch = useDispatch();
+
+    const allTypes = useSelector((state) => state.types)
+
+    //Ciclo de vida del componente. Trae todos los tipos cuando se monta el componente.
+    useEffect(() => {
+        dispatch(getAllTypes())
+    }, [dispatch])
+
+
+    //Manejador del filtrado del pokemon segun su origen:
+    const handleFilterCreated = (event) => { //toma la seleccion del onChange y maneja el evento con la action.
+        event.preventDefault();
+        dispatch(filterCreated(event.target.value))
+    }
+
+    //Manejador del filtrado del pokemon segun su tipo:
+    const handleFilterType = (event) => {
+        event.preventDefault();
+        dispatch(filterType(event.target.value))
+    }
+
+    //Manejador del ordenamiento de pokemons alfabeticamente por su nombre:
+    const handleSortName = (event) => {
+        event.preventDefault();
+        dispatch(sortByName(event.target.value))
+    }
+
+    //Manejador del ordenamiento de pokemons por su ataque:
+    const handleSortAttack = (event) => {
+        event.preventDefault();
+        dispatch(sortByAttack())
+    }
 
     return ( 
         <div className={styles.divNav}>
@@ -15,13 +52,27 @@ const Nav = () => {
             </Link>
 
             <div className={styles.divSelect}>
-                <select className={styles.selectPokemon} name="FILTRO_ORIGEN" id="">
+                <select className={styles.selectPokemon} onChange={(event) => handleFilterCreated(event)}>
+                    <option >ORIGEN</option>
                     <option value="API">API</option>
-                    <option value="B:D">BASE DE DATOS</option>
+                    <option value="BD">CREADOS</option>
+                    <option value="ALL">All Pokemons</option>
+                </select>
+
+                <select className={styles.selectPokemon} onChange={(event) => handleFilterType(event)} >
+                    <option value="ALL">All Pokemons</option>
+                    {
+                        allTypes?.map((type) =>{
+                            return (
+                                <option key={type.id} value={type.name} > {type.name} </option>
+                            )
+                        })
+                    }
                 </select>
                 
-                <select  className={styles.selectPokemon} name="FILTRO_TIPO" id="">
-                    <option value="All Pokemons">All Pokemons</option>
+                {/* <select  className={styles.selectPokemon} onChange={(event) => handleFilterType(event)}>
+                    <option >TIPOS</option>
+                    <option value="ALL">All Pokemons</option>
                     <option value="Normal">Normal</option>
                     <option value="Fighting">Fighting</option>
                     <option value="Poison">Poison</option>
@@ -42,17 +93,21 @@ const Nav = () => {
                     <option value="Fairy">Fairy</option>
                     <option value="Unknown">Unknown</option>
                     <option value="Shadow">Shadow</option>
-                </select>
+                </select> */}
             </div>
 
             <div className={styles.divSelect}>
-                <select className={styles.selectPokemon} name="ORDEN_ALFB" id="">
-                    <option value="A">Ascendente</option>
-                    <option value="D">Descendente</option>
+                <select className={styles.selectPokemon} onChange={(event) => handleSortName(event)}>
+                    <option >NOMBRE</option>
+                    <option value="ASD">A - Z</option>
+                    <option value="DSC">Z - A</option>
+                    <option value="ALL">All Pokemons</option>
                 </select>
-                <select className={styles.selectPokemon} name="ORDEN_ATQ" id="">
-                    <option value=">50">Mayor de 50</option>
-                    <option value="<50">Menor de 50</option>
+                <select className={styles.selectPokemon} onChange={(event) => handleSortAttack(event)}>
+                    <option >ATAQUE</option>
+                    <option value="A">Ascendente </option>
+                    <option value="D">Descendente</option>
+                    <option value="ALL">All Pokemons</option>
                 </select>
             </div>
             

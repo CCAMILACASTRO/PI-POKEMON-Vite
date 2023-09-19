@@ -2,34 +2,55 @@
     background-image: url(../../../public/imagenes/fondoDetail2.jpg);
     width: 100vw;
     height: 100vh;
+    padding-top: 100px;
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;  
     background-position: center center;
     font-family: Arial, Helvetica, sans-serif;
-    overflow: hidden;
 }
 
 .detailPokemon {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-items: center;
+    align-items: center;
     background-color: rgb(80, 0, 0, 0.5);
     border:rgb(80, 0, 0);
     border-style: double;
     border-radius: 10px;
-    width: 70%;
-    max-height: 80vh;
+    width: 80%;
+    height: auto;
+    padding: 10px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
-    padding-bottom: 15px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(238, 221, 221);
     box-shadow: 10px 10px 5px 0px rgb(0, 0, 0);
+   
 }
 
-.detailPokemon h2{
+h2{
     margin: 5px;
+    color:  rgb(83, 0, 0);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+}
+
+h5{
+    padding: 2px;
+    font-size: medium;
+}
+
+.nameCard{
+    color: rgb(252, 233, 157);
+}
+
+.imgCard{
+    margin: 20px;
+    width: 200px;
+    height:auto;
 }
 
 .divTipos{
@@ -37,28 +58,33 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: 50%;
-    height: 40px;
+    width: auto;
+    height: 30px;
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
-    border: thin rgb(83, 0, 0);
-    border-style: dashed;
+    color: rgb(83, 0, 0);
+    background-color: rgb(252, 233, 157);
+    border-radius: 5px;
 }
 
 
 .divInfo{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    border-color: solid white;
+    margin: 10px;
+    padding: 5px;
+    justify-content: space-around;
 }
 
 .divInfo h4 {
-    border: thin rgb(83, 0, 0);
-    border-style: dashed;
+    color: rgb(83, 0, 0);;
+    background-color: rgb(252, 233, 157);
+    padding: 5px;
+    width: auto;
+    height: auto;
     margin: 5px;
-    padding: 5px
+    border-radius: 5px;
 }
 
 .buttonBack{
@@ -69,8 +95,7 @@
     padding: 8px;
     font-weight: bolder;
     font-size: smaller;
-    margin-top: 30px;
-    margin-left: 80%;
+    
     
 }
 

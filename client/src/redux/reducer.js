@@ -1,15 +1,14 @@
 import {
     GET_POKEMONS, 
     GET_POKEMON_ID, 
+    CLEAN_DETAIL,
     GET_POKEMON_NAME, 
     GET_ALL_TYPES, 
     CREATE_POKEMON, 
-    GET_POKEMON_API,
-    GET_POKEMON_DB,
+    FILTER_CREATED,
     SORT_NAME, 
     SORT_ATTACK, 
-    FILTER_TYPE, 
-    FILTER_POKEMON } from './action-types';
+    FILTER_TYPE } from './action-types';
 
 
 
@@ -18,7 +17,7 @@ const initialState = {
     allPokemons: [],
     detail: [],
     types: [],
-    origen: [],
+    
 }
 
 
@@ -27,13 +26,18 @@ const reducer = (state= initialState, action) => {
         case GET_POKEMONS:
             return {
                 ...state,
-                //pokemon: action.payload,
+                pokemon: action.payload,
                 allPokemons: action.payload,
             }
         case GET_POKEMON_ID:
             return {
                 ...state,
                 detail: action.payload,
+            }
+        case CLEAN_DETAIL:
+            return {
+                ...state,
+                pokemon: action.payload,
             }
         case GET_POKEMON_NAME:
             return {
@@ -51,18 +55,53 @@ const reducer = (state= initialState, action) => {
                 pokemon: action.payload,
                 allPokemons: action.payload,
             }
-        case GET_POKEMON_API:
+        case FILTER_CREATED: 
+            const allPokemonsCopy = [...state.allPokemons];
+            let createdFiltered;
+            if(action.payload === 'DB') {
+                createdFiltered = allPokemonsCopy.filter((pokemon) => pokemon.createdInDb );
+            } else if (action.payload === 'API') {
+                createdFiltered = allPokemonsCopy.filter((pokemon) => !pokemon.createdInDb );
+            } else {
+                createdFiltered = allPokemonsCopy
+            }
             return {
                 ...state,
-                origen: state.allPokemons.filter((pokemon) => !isNaN(pokemon.id)) //guarda los pokemones que su id no sea numero.
+                pokemon: createdFiltered,
             }
-        case GET_POKEMON_DB:
+        case FILTER_TYPE:
+            const typesCopy = [...state.pokemon];
+            let typeFiltered = action.payload === 'ALL'
+            ? typesCopy
+            : typesCopy.filter((pokemon) => pokemon.types.some((type) => type.name === action.payload));
+            
+            if(typeFiltered.length <= 0) {
+                typeFiltered = typesCopy;
+                alert('No hay pokemones del tipo indicado!')
+            }
             return {
                 ...state,
-                origen: state.allPokemons.filter((pokemon) => pokemon.id.length > 4) //guarda los pokemones que su id sea de mas de 4 caracteres.
+                pokemon: typeFiltered,
             }
-            break;
-    
+        case SORT_NAME:
+            const nameCopy = [...state.pokemon]; //guardo una copia del estado global
+            return {
+                ...state, //retorno la copia del estado global 
+                pokemon: //propiedad pokemon con todos los pokemones ordenados.
+                action.payload === 'ASD'
+                ? nameCopy.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
+                : nameCopy.sort((a, b) => b.name.toLowerCase() - a.name.toLowerCase())
+            }
+        case SORT_ATTACK:
+            const attackCopy = [...state.pokemon];
+            return {
+                ...state,
+                pokemon: 
+                action.payload === 'A'
+                ? attackCopy.sort((a, b) => a.attack - b.attack)
+                : attackCopy.sort((a, b) => b.attack - a.attack)
+            }
+
         default:
             return { ...state }
     }

@@ -9,10 +9,17 @@ const Card = (props) => {
         <div className={styles.divCard} >
 
             <img className={styles.imgCard} src={props.image} alt={props.name}/>
-            <h4 className={styles.nameCard}>Nombre: {props.name} </h4>
+            <h4 className={styles.nameCard}>Nombre: {props.name.toUpperCase()} </h4>
             <div className={styles.divTiposCard}>
-                <h5 className={styles.typeCard}>Tipo: {props.types} </h5>
-                <h5 className={styles.typeCard}>Tipo: {props.types} </h5> 
+                <h5>Tipo: </h5>
+                {
+                    props.types?.map((type, index) => {
+                        return (
+                            <h5 className={styles.typeCard} key={index}> {type.toUpperCase()} </h5>
+                        )
+                    })
+                }
+                              
             </div>
 
             <Link to={`/pokemons/detail/${props.id}`} >
@@ -25,3 +32,4 @@ const Card = (props) => {
 };
 
 export default Card;
+

@@ -2,15 +2,14 @@ import axios from 'axios';
 import {
     GET_POKEMONS, 
     GET_POKEMON_ID, 
+    CLEAN_DETAIL,
     GET_POKEMON_NAME, 
     GET_ALL_TYPES, 
     CREATE_POKEMON, 
-    GET_POKEMON_API,
-    GET_POKEMON_DB,
+    FILTER_CREATED,
     SORT_NAME, 
     SORT_ATTACK, 
-    FILTER_TYPE, 
-    FILTER_POKEMON } from './action-types';
+    FILTER_TYPE } from './action-types';
 
 
 const URL_POKEMON = 'http://localhost:3001/pokemon'; //url del servidor
@@ -46,6 +45,12 @@ export const getPokemonByID = (id) => {
     }
 }
 
+//limpiar el detail:
+export const cleanDetail = () => {
+    return ({ type: CLEAN_DETAIL, payload: []})
+
+}
+
 //Obtener un pokemon segun su nombre:
 export const getPokemonByName = (name) => {
     return async (dispatch) => {
@@ -77,7 +82,7 @@ export const getAllTypes = () => {
 }
 
 //Crear un pokemon:
-export const postPokemon = (createPokemon) => {
+export const createPokemon = (createPokemon) => {
     return async (dispatch) => {
         try {
 
@@ -92,12 +97,25 @@ export const postPokemon = (createPokemon) => {
     }
 }
 
-
-export const pokemonApi = () => {
-    return ({ type: GET_POKEMON_API, payload: 'Filtrando pokemons de la API...'})
+//filtros por origen
+export const filterCreated = (payload) => {
+    return ({ type: FILTER_CREATED, payload })
 }
 
-export const pokemonDB = () => {
-    return ({ type: GET_POKEMON_DB, payload: 'Filtrando pokemons de la Base de Datos...'})
+
+//orden alfabeticamente por nombre
+export const sortByName = (name) => {
+    return ({ type: SORT_NAME, payload: name})
+}
+
+//orden de mayor o menor ataque
+export const sortByAttack = (attack) => {
+    return ({ type: SORT_ATTACK, payload: attack})
+}
+
+
+//filtro por tipo
+export const filterType = (type) => {
+    return ({ type: FILTER_TYPE, payload: type})
 }
 
