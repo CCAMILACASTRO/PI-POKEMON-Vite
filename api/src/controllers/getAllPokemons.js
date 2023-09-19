@@ -38,13 +38,13 @@ const getPokemonsApi = async () => {
 const getPokemonsDb = async () => {
     try{
         const pokemonsDb = await Pokemon.findAll({ //para traer todos los registros de la base de datos.
-            include:{ //incluyendo info del modelo Type del nombre del tipo de pokemon.
+            include:[{ //incluyendo info del modelo Type del nombre del tipo de pokemon.
                 attributes: ["name"],
                 model: Type,
                 through: { //para no agregar atributos adicionales
-                attributes: [],
+                    attributes: [],
                 },
-            }
+            }]
         });
 
         return pokemonsDb; // devuelve un arreglo con un objeto con los datos del pokemon

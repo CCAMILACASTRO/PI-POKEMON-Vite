@@ -34,17 +34,18 @@ const getPokemonsApiById = async (id) => {
 };
 
 
-const getPokemonsDbById = async() => {
+const getPokemonsDbById = async(id) => {
 
     try {
         const pokemonDbId = await Pokemon.findOne({   //Busca en la base de datos por id y si coincide con el id del modelo Type.
-            include: { //incluye informacion del modelo Type.
+            where: { id: id},
+            include: [{ //incluye informacion del modelo Type.
                 attributes: ['name'],
                 model: Type,
                 through: {
                     attributes: [],
                 }
-            }
+            }]
         })
         return pokemonDbId; //retorna el pokemon encontrado junto con el tipo.
 
