@@ -44,6 +44,10 @@ const getPokemonDbByName = async(name) => {
               include: {
                 attributes: ["name"], //incluye informacion del modelo Type.
                 model: Type,
+                through: {
+                    attributes: [],
+                }
+
               },
         });
 
