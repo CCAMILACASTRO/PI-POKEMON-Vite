@@ -1,12 +1,12 @@
 import React from 'react';
 import Card from '../Card/Card';
 import styles from './Cards.module.css';
-import { useSelector } from 'react-redux';
+import { useSelector} from 'react-redux';
 
 
 const Cards = () => {
 
-    const allPokemons = useSelector((state) => state.allPokemons) //
+    const allPokemons = useSelector((state) => state.allPokemons) 
 
     if(!allPokemons) {
         return 'No se pudieron cargar los pokemons'

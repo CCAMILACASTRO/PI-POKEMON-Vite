@@ -4,7 +4,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllTypes, filterCreated, sortByName, sortByAttack, filterType } from '../../redux/actions'
+import { getAllTypes, filterCreated, sortByName, sortByAttack, filterType, getAllPokemons, cleanPokemons } from '../../redux/actions'
 
 
 const Nav = () => {
@@ -40,7 +40,14 @@ const Nav = () => {
     //Manejador del ordenamiento de pokemons por su ataque:
     const handleSortAttack = (event) => {
         event.preventDefault();
-        dispatch(sortByAttack())
+        dispatch(sortByAttack(event.target.value))
+    }
+
+    //Para limpiar los filtros
+    const handleClick = (event) => {
+        event.preventDefault();
+        dispatch(cleanPokemons(dispatch))
+        dispatch(getAllPokemons())
     }
 
     return ( 
@@ -89,6 +96,12 @@ const Nav = () => {
             
 
             <SearchBar/>
+
+            <button
+                className={styles.buttonClean}
+                type='submit'
+                onClick={(event) => handleClick(event)}
+                > Limpiar Filtros </button>
 
             <Link to='/pokemons/create'>
                 <button  className={styles.buttonCreate}> Crear Pokemon </button>

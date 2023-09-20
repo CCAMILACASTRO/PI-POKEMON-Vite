@@ -14,7 +14,7 @@ const Home = () => {
 
     useEffect (() => { // Ciclo de vida al componente
         dispatch( getAllPokemons() ) //cuando se monta el componente hace el dispatch de la action.
-    }, []) //array de dependencia vacio para que se ejecute una sola cuando se monta el componente.
+    }, [dispatch]) //array de dependencia vacio para que se ejecute una sola cuando se monta el componente.
 
 
     return ( 

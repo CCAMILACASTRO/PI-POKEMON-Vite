@@ -2,6 +2,7 @@ import {
     GET_POKEMONS, 
     GET_POKEMON_ID, 
     CLEAN_DETAIL,
+    CLEAN_POKEMONS,
     GET_POKEMON_NAME, 
     GET_ALL_TYPES, 
     CREATE_POKEMON, 
@@ -17,7 +18,6 @@ const initialState = {
     allPokemons: [],
     detail: [],
     types: [],
-    
 }
 
 
@@ -39,10 +39,16 @@ const reducer = (state= initialState, action) => {
                 ...state,
                 pokemon: action.payload,
             }
+        case CLEAN_POKEMONS:
+            return {
+                ...state,
+                pokemon: action.payload
+            }
         case GET_POKEMON_NAME:
             return {
                 ...state,
                 pokemon: action.payload,
+                allPokemons: action.payload,
             }
         case GET_ALL_TYPES:
             return {
@@ -71,47 +77,59 @@ const reducer = (state= initialState, action) => {
             }
             
         case FILTER_TYPE:
-            const typesCopy = [...state.pokemon]
-            let typesFilter = typesCopy.filter((type) => type.name === action.payload);
-            console.log(typesFilter)
-            
+            const typesCopy = [...state.allPokemons]
+            let typeFiltered;
+            if(action.payload === 'ALL'){
+                typeFiltered = typesCopy;
+            } else {
+                typeFiltered = typesCopy.filter((pokemon) => {
+                    if(!pokemon.types) return undefined;
+                    return pokemon.types.includes(action.payload)
+                } )
+            }
             return {
                 ...state,
-                allPokemons:
-                    action.payload === 'ALL'
-                    ? [...state.pokemon]
-                    : typesFilter
+                allPokemons: typeFiltered                  
             }
 
         case SORT_NAME:
-            const nameCopy = [...state.pokemon];
-            
-            let nameFiltered;
-            if(action.payload === 'ASD') {
-                nameFiltered = nameCopy.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase());
-            } else if (action.payload === 'DSC') {
-                nameFiltered = nameCopy.sort((a, b) => b.name.toLowerCase() - a.name.toLowerCase());
+            const nameCopy = [...state.allPokemons];
+            let nameSort;
+            if(action.payload !== 'ALL') {
+                nameSort = nameCopy;
             } else {
-                nameFiltered = nameCopy;
+                nameSort = nameCopy.sort((a, b) => {
+                    if (a.name < b.name) {  return action.payload === 'ASD' ? -1 : 1; } // de A - Z
+                    if (a.name > b.name) {  return action.payload === 'DSC' ? -1 : 1;} // de Z - A
+                    return 0;
+                    
+                });
             }
+            
             return {
                 ...state,
-                AllPokemons: nameFiltered,
+                allPokemons: nameSort,
+               
+            }           
                 
-            }
         case SORT_ATTACK:
             const attackCopy = [...state.allPokemons];
-            let attackFiltered;
-            if(action.payload === 'ASD') {
-                attackFiltered = attackCopy.sort((a, b) => a.attack - b.attack);
-            } else if (action.payload === 'DSC') {
-                attackFiltered = attackCopy.sort((a, b) => b.attack - a.attack);
+            let attackSort;
+            if(action.payload === 'ALL') {
+                attackSort = attackCopy;
             } else {
-                attackFiltered = attackCopy;
+                attackSort = attackCopy.sort((a, b) => {
+                    if (a.attack < b.attack) {  return action.payload === 'ASD' ? -1 : 1; } //menor a mayor ataque
+                    if (a.attack > b.attack) {  return action.payload === 'DSC' ? -1 : 1;} //mayor a menor ataque
+                    return 0;
+                    
+                });
             }
+            
             return {
                 ...state,
-                pokemon: attackFiltered,
+                allPokemons: attackSort,
+               
             }
 
         default:

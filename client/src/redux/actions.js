@@ -3,6 +3,7 @@ import {
     GET_POKEMONS, 
     GET_POKEMON_ID, 
     CLEAN_DETAIL,
+    CLEAN_POKEMONS,
     GET_POKEMON_NAME, 
     GET_ALL_TYPES, 
     CREATE_POKEMON, 
@@ -22,7 +23,6 @@ export const getAllPokemons = () => {
         try {
             const allPokemons = await axios.get(`${URL_POKEMON}`); //obtener los datos de la API.
 
-            // console.log(allPokemons)
             return dispatch ({ type: GET_POKEMONS, payload: allPokemons.data }); //se despacha el objeto al reducer para actualizar el estado global.
             
         } catch (error) {
@@ -49,7 +49,11 @@ export const getPokemonByID = (id) => {
 //limpiar el detail:
 export const cleanDetail = () => {
     return ({ type: CLEAN_DETAIL, payload: []})
+}
 
+//limpiar el pokemon buscado:
+export const cleanPokemons = (dispatch) => {
+    return dispatch({ type: CLEAN_POKEMONS, payload: []})
 }
 
 //Obtener un pokemon segun su nombre:
@@ -73,7 +77,7 @@ export const getAllTypes = () => {
         try {
 
             const allTypes = await axios.get(`${URL_TYPE}`) //obtiene todos los tipos de pokemon de la api.
-            // console.log(allTypes)
+            
             return dispatch({ type: GET_ALL_TYPES, payload: allTypes.data }); //se despacha el objeto al reducer para actualizar el estado global.
             
         } catch (error) {
@@ -99,8 +103,8 @@ export const createPokemon = (createPokemon) => {
 }
 
 //filtros por origen
-export const filterCreated = (payload) => {
-    return ({ type: FILTER_CREATED, payload })
+export const filterCreated = (pokemonCreated) => {
+    return ({ type: FILTER_CREATED, payload: pokemonCreated })
 }
 
 
@@ -118,5 +122,6 @@ export const sortByAttack = (attack) => {
 //filtro por tipo
 export const filterType = (types) => {
     return ({ type: FILTER_TYPE, payload: types})
+    
 }
 

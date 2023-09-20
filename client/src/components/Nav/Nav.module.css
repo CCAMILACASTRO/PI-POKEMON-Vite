@@ -44,6 +44,24 @@
     color: rgb(0, 89, 255);
 }
 
+.buttonClean{
+    background-color: rgb(255, 187, 0);
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    text-align: justify;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: smaller;
+    color: rgb(0, 89, 255);
+}
+
+.buttonClean:hover{
+    background-color:rgb(41, 184, 136);
+    color: rgb(248, 246, 100);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+}
+
 .buttonBack:hover{
     background-color:rgb(41, 184, 136);
     color: rgb(248, 246, 100);
@@ -67,6 +85,7 @@
     color: rgb(248, 246, 100);
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
 } 
+
 
 
 @media (max-width: 768px) {

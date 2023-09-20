@@ -1,51 +1,52 @@
 import React from 'react';
-import axios from 'axios'; 
 import styles from './SearchBar.module.css'
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-const URL = 'http://localhost:3001/pokemon'; //url local para traer pokemones de la api.
+import { getPokemonByName, cleanPokemons } from '../../redux/actions';
+import { useDispatch } from 'react-redux';
 
 
 const SearchBar = () =>{ //la barra de busqueda de pokemones.
 
-    const [ pokemonName, setPokemonName ] = useState('') //estado local para guardar el valor del input.
-    const navigate = useNavigate(); //para redirigirnos al detail del pokemon.
+    const dispatch = useDispatch();
+    const [pokemonName, setPokemonName] = useState('');
 
-    const searchPokemon = async() => { //se ejecuta cuando hace click en el boton de busqueda.
-        
-        const response = await axios.get(`${URL}?name=${pokemonName}`); // solicitud por el nombre/query.
-        const pokemon = response.data; //guardo en la constante pokemon la respuesta (objeto data) de la api
-
-        if(pokemon.name) { //verifico si el nombre existe...
-             const id = pokemon.id; //guardo el id del pokemon
-             navigate(`detail/${id}`); // redirecciono hacia la ruta detail del pokemon.
-        } else {
-            alert(`El pokemon ${pokemonName} no existe!`) //envio una alerta diciendo que el pokemon no existe
-        }
-    };
-
-
-    const handleChange = (event) => { //evento del onChange
+    const handleChange = (event) => {
+        event.preventDefault();
         setPokemonName(event.target.value);
-    } //actualiza el estado de pokemonName con el valor ingresado en el input
+    }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        dispatch(getPokemonByName(pokemonName));
+        dispatch(cleanPokemons(dispatch))
+        setPokemonName('');
+    }
+
+    const handleInput = (event) => {
+        event.preventDefault();
+        setPokemonName(event.target.value)
+    }
 
     return (
-        <div className={styles.divSearchBar}>
+        <div >
+            <form onChange={handleChange} className={styles.divSearchBar}>
 
-            <input 
-            className={styles.inputSearchBar}
-            placeholder= "Ingrese un pokemon" //campo descriptivo
-            type="text"
-            value={pokemonName} //toma el valor del input para luego actualizar el estado
-            onChange={handleChange} // ejecuta la funcion handle para actualizar el estado de pokemonName
-            />
+                <input 
+                className={styles.inputSearchBar}
+                placeholder= "Buscar..." //campo descriptivo
+                type="text"
+                value={pokemonName} 
+                onChange={handleInput}
+                />
 
-            <button
-            className={styles.buttonSearchBar}
-            type='button'
-            onClick={searchPokemon} //cuando hace click se ejecuta la funcion searchPokemon.
-            > Buscar </button>
+                <button
+                className={styles.buttonSearchBar}
+                type='submit'
+                onClick={handleSubmit}
+                > Buscar </button>
+
+            </form>
+                
 
         </div>
     )
