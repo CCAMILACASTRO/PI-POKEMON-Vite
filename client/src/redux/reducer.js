@@ -95,12 +95,12 @@ const reducer = (state= initialState, action) => {
         case SORT_NAME:
             const nameCopy = [...state.allPokemons];
             let nameSort;
-            if(action.payload !== 'ALL') {
+            if(action.payload === 'ALL') {
                 nameSort = nameCopy;
             } else {
                 nameSort = nameCopy.sort((a, b) => {
-                    if (a.name < b.name) {  return action.payload === 'ASD' ? -1 : 1; } // de A - Z
-                    if (a.name > b.name) {  return action.payload === 'DSC' ? -1 : 1;} // de Z - A
+                    if (a.name < b.name) {  return action.payload === 'ASD' ? -1 : 1; } //menor a mayor nombre
+                    if (a.name > b.name) {  return action.payload === 'DSC' ? -1 : 1;} //mayor a menor nombre
                     return 0;
                     
                 });
