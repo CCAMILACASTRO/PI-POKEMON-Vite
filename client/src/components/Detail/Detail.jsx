@@ -30,7 +30,7 @@ const Detail = () => {
             <h2>INFORMACION GENERAL</h2>
             <div className={styles.detailPokemon}>
                 <img className={styles.imgCard} src={pokemonId?.image} alt={pokemonId?.name}/>
-                <h2 className={styles.nameCard}>Nombre: {pokemonId?.name.toUpperCase()} </h2>
+                <h2 className={styles.nameCard}>Nombre: {pokemonId?.name} </h2>
                  
 
                 <div className={styles.divInfo}>

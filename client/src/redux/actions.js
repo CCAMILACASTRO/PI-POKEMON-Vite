@@ -22,6 +22,7 @@ export const getAllPokemons = () => {
         try {
             const allPokemons = await axios.get(`${URL_POKEMON}`); //obtener los datos de la API.
 
+            // console.log(allPokemons)
             return dispatch ({ type: GET_POKEMONS, payload: allPokemons.data }); //se despacha el objeto al reducer para actualizar el estado global.
             
         } catch (error) {
@@ -72,7 +73,7 @@ export const getAllTypes = () => {
         try {
 
             const allTypes = await axios.get(`${URL_TYPE}`) //obtiene todos los tipos de pokemon de la api.
-
+            // console.log(allTypes)
             return dispatch({ type: GET_ALL_TYPES, payload: allTypes.data }); //se despacha el objeto al reducer para actualizar el estado global.
             
         } catch (error) {
@@ -87,7 +88,7 @@ export const createPokemon = (createPokemon) => {
         try {
 
             const newPokemon = await axios.post(`${URL_POKEMON}`, createPokemon) //crea un pokemon a la url de la api.
-
+            
             return dispatch({ type: CREATE_POKEMON, payload: newPokemon.data}) //se despacha el objeto al reducer para actualizar el estado global.
             
             
@@ -108,14 +109,14 @@ export const sortByName = (name) => {
     return ({ type: SORT_NAME, payload: name})
 }
 
-//orden de mayor o menor ataque
+//orden de mayor o menor por ataque
 export const sortByAttack = (attack) => {
     return ({ type: SORT_ATTACK, payload: attack})
 }
 
 
 //filtro por tipo
-export const filterType = (type) => {
-    return ({ type: FILTER_TYPE, payload: type})
+export const filterType = (types) => {
+    return ({ type: FILTER_TYPE, payload: types})
 }
 

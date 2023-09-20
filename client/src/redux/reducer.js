@@ -56,7 +56,7 @@ const reducer = (state= initialState, action) => {
                 allPokemons: action.payload,
             }
         case FILTER_CREATED: 
-            const allPokemonsCopy = [...state.allPokemons];
+            const allPokemonsCopy = [...state.pokemon];
             let createdFiltered;
             if(action.payload === 'DB') {
                 createdFiltered = allPokemonsCopy.filter((pokemon) => pokemon.createdInDb );
@@ -67,39 +67,51 @@ const reducer = (state= initialState, action) => {
             }
             return {
                 ...state,
-                pokemon: createdFiltered,
+                allPokemons: createdFiltered,
             }
-        case FILTER_TYPE:
-            const typesCopy = [...state.pokemon];
-            let typeFiltered = action.payload === 'ALL'
-            ? typesCopy
-            : typesCopy.filter((pokemon) => pokemon.types.some((type) => type.name === action.payload));
             
-            if(typeFiltered.length <= 0) {
-                typeFiltered = typesCopy;
-                alert('No hay pokemones del tipo indicado!')
+        case FILTER_TYPE:
+            const typesCopy = [...state.pokemon]
+            let typesFilter = typesCopy.filter((type) => type.name === action.payload);
+            console.log(typesFilter)
+            
+            return {
+                ...state,
+                allPokemons:
+                    action.payload === 'ALL'
+                    ? [...state.pokemon]
+                    : typesFilter
+            }
+
+        case SORT_NAME:
+            const nameCopy = [...state.pokemon];
+            
+            let nameFiltered;
+            if(action.payload === 'ASD') {
+                nameFiltered = nameCopy.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase());
+            } else if (action.payload === 'DSC') {
+                nameFiltered = nameCopy.sort((a, b) => b.name.toLowerCase() - a.name.toLowerCase());
+            } else {
+                nameFiltered = nameCopy;
             }
             return {
                 ...state,
-                pokemon: typeFiltered,
-            }
-        case SORT_NAME:
-            const nameCopy = [...state.pokemon]; //guardo una copia del estado global
-            return {
-                ...state, //retorno la copia del estado global 
-                pokemon: //propiedad pokemon con todos los pokemones ordenados.
-                action.payload === 'ASD'
-                ? nameCopy.sort((a, b) => a.name.toLowerCase() - b.name.toLowerCase())
-                : nameCopy.sort((a, b) => b.name.toLowerCase() - a.name.toLowerCase())
+                AllPokemons: nameFiltered,
+                
             }
         case SORT_ATTACK:
-            const attackCopy = [...state.pokemon];
+            const attackCopy = [...state.allPokemons];
+            let attackFiltered;
+            if(action.payload === 'ASD') {
+                attackFiltered = attackCopy.sort((a, b) => a.attack - b.attack);
+            } else if (action.payload === 'DSC') {
+                attackFiltered = attackCopy.sort((a, b) => b.attack - a.attack);
+            } else {
+                attackFiltered = attackCopy;
+            }
             return {
                 ...state,
-                pokemon: 
-                action.payload === 'A'
-                ? attackCopy.sort((a, b) => a.attack - b.attack)
-                : attackCopy.sort((a, b) => b.attack - a.attack)
+                pokemon: attackFiltered,
             }
 
         default:
