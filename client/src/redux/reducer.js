@@ -96,40 +96,42 @@ const reducer = (state= initialState, action) => {
 
         case SORT_NAME:
             const nameCopy = [...state.allPokemons];
-            let nameSort;
-            if(action.payload === 'ALL') {
-                nameSort = nameCopy;
+            if (action.payload === 'ALL') {
+                return { ...state, allPokemons: state.pokemon, // Usar los pokemons originales sin ordenar
+                };
+
             } else {
-                nameSort = nameCopy.sort((a, b) => {
-                    if (a.name < b.name) {  return action.payload === 'ASD' ? -1 : 1; } //menor a mayor nombre
-                    if (a.name > b.name) {  return action.payload === 'DSC' ? -1 : 1;} //mayor a menor nombre
+                let nameSort = nameCopy.sort((a, b) => {
+                    if (a.name < b.name) return action.payload === 'ASD' ? -1 : 1;
+                    if (a.name > b.name) return action.payload === 'DSC' ? -1 : 1;
                     return 0;
-                    
                 });
-            }
-            return {
-                ...state,
-                allPokemons: nameSort,
-            }           
+                return {
+                    ...state,
+                    allPokemons: nameSort,
+                };
+            }          
                 
         case SORT_ATTACK:
             const attackCopy = [...state.allPokemons];
-            let attackSort;
-            if(action.payload === 'ALL') {
-                attackSort = attackCopy;
-            } else {
-                attackSort = attackCopy.sort((a, b) => {
+            
+            if (action.payload === 'ALL') {
+                return { ...state, allPokemons: state.pokemon, // Usar los pokemons originales sin ordenar
+                };
+
+            }  else {
+                let attackSort = attackCopy.sort((a, b) => {
                     if (a.attack < b.attack) {  return action.payload === 'ASD' ? -1 : 1; } //menor a mayor ataque / + debil a + fuerte
                     if (a.attack > b.attack) {  return action.payload === 'DSC' ? -1 : 1;} //mayor a menor ataque / + fuerte a + debil
                     return 0;
                 });
+                return {
+                    ...state,
+                    allPokemons: attackSort,
+                   
+                }
             }
-            return {
-                ...state,
-                allPokemons: attackSort,
-               
-            }
-
+            
         default:
             return { ...state }
     }

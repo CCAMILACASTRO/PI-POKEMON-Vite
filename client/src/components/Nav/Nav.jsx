@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Nav.module.css';
 import SearchBar from '../SearchBar/SearchBar';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTypes, filterCreated, sortByName, sortByAttack, filterType, getAllPokemons, cleanPokemons } from '../../redux/actions'
 
@@ -14,9 +14,9 @@ const Nav = () => {
     const allTypes = useSelector((state) => state.types)
 
     //Ciclo de vida del componente. Trae todos los tipos cuando se monta el componente.
-    useEffect(() => {
-        dispatch(getAllTypes())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getAllTypes())
+    // }, [dispatch])
 
 
     //Manejador del filtrado del pokemon segun su origen:
@@ -80,11 +80,10 @@ const Nav = () => {
             </div>
 
             <div className={styles.divSelect}>
-                <select className={styles.selectPokemon} onChange={(event) => handleSortName(event)}>
+                <select className={styles.selectPokemon} onChange={(event) => handleSortName(event)} defaultValue="ALL">
                     <option value="ALL">NOMBRE</option>
                     <option value="ASD">A - Z</option>
                     <option value="DSC">Z - A</option>
-                    
                 </select>
                 <select className={styles.selectPokemon} onChange={(event) => handleSortAttack(event)}>
                     <option value="ALL">ATAQUE</option>
