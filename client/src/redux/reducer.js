@@ -107,11 +107,9 @@ const reducer = (state= initialState, action) => {
                     
                 });
             }
-            
             return {
                 ...state,
                 allPokemons: nameSort,
-               
             }           
                 
         case SORT_ATTACK:
@@ -121,13 +119,11 @@ const reducer = (state= initialState, action) => {
                 attackSort = attackCopy;
             } else {
                 attackSort = attackCopy.sort((a, b) => {
-                    if (a.attack < b.attack) {  return action.payload === 'ASD' ? -1 : 1; } //menor a mayor ataque
-                    if (a.attack > b.attack) {  return action.payload === 'DSC' ? -1 : 1;} //mayor a menor ataque
+                    if (a.attack < b.attack) {  return action.payload === 'ASD' ? -1 : 1; } //menor a mayor ataque / + debil a + fuerte
+                    if (a.attack > b.attack) {  return action.payload === 'DSC' ? -1 : 1;} //mayor a menor ataque / + fuerte a + debil
                     return 0;
-                    
                 });
             }
-            
             return {
                 ...state,
                 allPokemons: attackSort,
