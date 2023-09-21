@@ -43,7 +43,7 @@ const Detail = () => {
                         {
                             pokemonId.types?.map((type, index) => {
                                 return (
-                                    <h5 className={styles.typeCard} key={index}> {index > 0 ? ', ' : ''}{type.toUpperCase()} </h5>
+                                    <h5 className={styles.typeCard} key={index}> {index > 0 ? ', ' : ''}{type.name.toUpperCase()} </h5>
                                 )
                             })
                          }

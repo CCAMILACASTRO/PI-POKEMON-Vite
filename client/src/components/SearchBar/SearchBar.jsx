@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SearchBar.module.css'
 import { useState } from 'react';
-import { getPokemonByName, cleanPokemons } from '../../redux/actions';
+import { getPokemonByName } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 
 
@@ -18,9 +18,9 @@ const SearchBar = () =>{ //la barra de busqueda de pokemones.
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(getPokemonByName(pokemonName));
-        dispatch(cleanPokemons(dispatch))
         setPokemonName('');
     }
+
 
     const handleInput = (event) => {
         event.preventDefault();

@@ -8,8 +8,8 @@ const Cards = () => {
 
     const allPokemons = useSelector((state) => state.allPokemons) 
 
-    if(!allPokemons) {
-        return 'No se pudieron cargar los pokemons'
+    if (!Array.isArray(allPokemons)) {
+        return 'No se pudieron cargar los pokemons';
     }
 
     return (
@@ -17,12 +17,12 @@ const Cards = () => {
            { allPokemons.map((pokemon) => {
             return (
                 <Card
-                key={pokemon.id}
-                id={pokemon.id}
-                name={pokemon.name}
-                image={pokemon.image}
-                types={pokemon.types}
-            />
+                    key={pokemon.id}
+                    id={pokemon.id}
+                    name={pokemon.name}
+                    image={pokemon.image}
+                    types={pokemon.types}
+                />
             )
             })}
         </div>

@@ -61,7 +61,7 @@ const Nav = () => {
             <div className={styles.divSelect}>
                 <select className={styles.selectPokemon} onChange={(event) => handleFilterCreated(event)}>
                     <option value="ALL">ORIGEN</option>
-                    <option value="API">API</option>
+                    <option value="API">ORIGINALES</option>
                     <option value="DB">CREADOS</option>
                     
                 </select>

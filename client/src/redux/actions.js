@@ -61,14 +61,14 @@ export const getPokemonByName = (name) => {
     return async (dispatch) => {
         try {
 
-            const pokemonName = await axios.get(`${URL_POKEMON}/?name=${name}`) //obtiene info de la api segun el nombre del pokemon.
+            const pokemonName = await axios.get(`${URL_POKEMON}/?name=${name}`);
 
-            return dispatch({ type: GET_POKEMON_NAME, payload: pokemonName.data }) //se despacha el objeto al reducer para actualizar el estado global.
-            
+            return dispatch({ type: GET_POKEMON_NAME, payload: pokemonName.data });
+
         } catch (error) {
-            return response.status(404).json({error: error.message})
+            return response.status(404).json({ error: error.message });
         }
-    }
+    };
 }
 
 //Obtener todos los Tipos de pokemones:

@@ -15,7 +15,7 @@ import {
 
 const initialState = {
     pokemon: [],
-    allPokemons: [],
+    allPokemons: {},
     detail: [],
     types: [],
 }
@@ -48,7 +48,8 @@ const reducer = (state= initialState, action) => {
             return {
                 ...state,
                 pokemon: action.payload,
-                allPokemons: action.payload,
+                allPokemons: action.payload, // Agrega los Pokémon buscados a allPokemons
+                
             }
         case GET_ALL_TYPES:
             return {
@@ -77,19 +78,20 @@ const reducer = (state= initialState, action) => {
             }
             
         case FILTER_TYPE:
-            const typesCopy = [...state.allPokemons]
+
+            const typesCopy = [...state.pokemon];
             let typeFiltered;
-            if(action.payload === 'ALL'){
+            if (action.payload === 'ALL') {
                 typeFiltered = typesCopy;
             } else {
                 typeFiltered = typesCopy.filter((pokemon) => {
-                    if(!pokemon.types) return undefined;
-                    return pokemon.types.includes(action.payload)
-                } )
+                    if (!pokemon.types) return false;
+                    return pokemon.types.some((type) => type.name === action.payload);
+                });
             }
             return {
                 ...state,
-                allPokemons: typeFiltered                  
+                allPokemons: typeFiltered,
             }
 
         case SORT_NAME:
