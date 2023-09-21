@@ -15,7 +15,7 @@ import {
 
 const initialState = {
     pokemon: [],
-    allPokemons: {},
+    allPokemons: [], //{}
     detail: [],
     types: [],
 }
@@ -32,6 +32,7 @@ const reducer = (state= initialState, action) => {
         case GET_POKEMON_ID:
             return {
                 ...state,
+                pokemon: action.payload,
                 detail: action.payload,
             }
         case CLEAN_DETAIL:
@@ -85,8 +86,8 @@ const reducer = (state= initialState, action) => {
                 typeFiltered = typesCopy;
             } else {
                 typeFiltered = typesCopy.filter((pokemon) => {
-                    if (!pokemon.types) return false;
-                    return pokemon.types.some((type) => type.name === action.payload);
+                    if (!pokemon.Types) return false;
+                    return pokemon.Types.some((type) => type.name === action.payload);
                 });
             }
             return {
@@ -128,7 +129,6 @@ const reducer = (state= initialState, action) => {
                 return {
                     ...state,
                     allPokemons: attackSort,
-                   
                 }
             }
             

@@ -21,7 +21,7 @@ const Cards = () => {
                     id={pokemon.id}
                     name={pokemon.name}
                     image={pokemon.image}
-                    types={pokemon.types}
+                    Types={pokemon.Types}
                 />
             )
             })}

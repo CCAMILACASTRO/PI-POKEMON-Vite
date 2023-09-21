@@ -30,7 +30,7 @@ const Detail = () => {
             <h2>INFORMACION GENERAL</h2>
             <div className={styles.detailPokemon}>
                 <img className={styles.imgCard} src={pokemonId?.image} alt={pokemonId?.name}/>
-                <h2 className={styles.nameCard}>Nombre: {pokemonId?.name} </h2>
+                <h2 className={styles.nameCard}>Nombre: {pokemonId?.name.toUpperCase()} </h2>
                  
 
                 <div className={styles.divInfo}>
@@ -41,7 +41,7 @@ const Detail = () => {
                 <div className={styles.divTipos}>
                     <h5>Tipo: </h5>
                         {
-                            pokemonId.types?.map((type, index) => {
+                            pokemonId.Types?.map((type, index) => {
                                 return (
                                     <h5 className={styles.typeCard} key={index}> {index > 0 ? ', ' : ''}{type.name.toUpperCase()} </h5>
                                 )

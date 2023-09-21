@@ -5,6 +5,10 @@ import { getPokemonByName } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 
 
+
+// const URL = 'http://localhost:3001/pokemon'
+
+
 const SearchBar = () =>{ //la barra de busqueda de pokemones.
 
     const dispatch = useDispatch();
@@ -24,7 +28,7 @@ const SearchBar = () =>{ //la barra de busqueda de pokemones.
 
     const handleInput = (event) => {
         event.preventDefault();
-        setPokemonName(event.target.value)
+        setPokemonName(event.target.value.toLowerCase())
     }
 
     return (
@@ -43,8 +47,7 @@ const SearchBar = () =>{ //la barra de busqueda de pokemones.
                 className={styles.buttonSearchBar}
                 type='submit'
                 onClick={handleSubmit}
-                > Buscar </button>
-
+                > Buscar </button>-
             </form>
                 
 

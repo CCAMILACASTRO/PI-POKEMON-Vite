@@ -61,7 +61,7 @@ export const getPokemonByName = (name) => {
     return async (dispatch) => {
         try {
 
-            const pokemonName = await axios.get(`${URL_POKEMON}/?name=${name}`);
+            const pokemonName = await axios.get(`${URL_POKEMON}?name=${name}`);
 
             return dispatch({ type: GET_POKEMON_NAME, payload: pokemonName.data });
 

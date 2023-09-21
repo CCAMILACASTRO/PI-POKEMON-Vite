@@ -4,7 +4,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import { Link } from 'react-router-dom';
 // import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllTypes, filterCreated, sortByName, sortByAttack, filterType, getAllPokemons, cleanPokemons } from '../../redux/actions'
+import { filterCreated, sortByName, sortByAttack, filterType, getAllPokemons, cleanPokemons } from '../../redux/actions'
 
 
 const Nav = () => {
