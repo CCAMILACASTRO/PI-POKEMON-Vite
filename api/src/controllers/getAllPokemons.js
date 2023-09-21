@@ -7,7 +7,7 @@ const getPokemonsApi = async () => {
 
     try {
         const response = await axios.get(`${URL}?limit=151`); //almacena en response el resultado de la solicitud a la api.
-        const results = response.data.results; //objeto con info del pokemon que viene de la api.
+        const results = response.data.results // objeto con info del pokemon que viene de la api.
 
         const arrayPromises = results.map((promesa) => axios.get(promesa.url)); // detalles individuales de cada pokemon.
 
@@ -18,7 +18,8 @@ const getPokemonsApi = async () => {
                 id: pokemon.data.id,
                 name: pokemon.data.name,
                 image: pokemon.data.sprites.other.dream_world.front_default, // url imagen
-                types: pokemon.data.types.map((pokemon) => pokemon.type.name), //devuelve un array con los tipos
+                // types: pokemon.data.types.map((pokemon) => pokemon.type.name), //devuelve un array con los tipos
+                types: pokemon.data.types.map((pokemon) => { return {name: pokemon.type.name}}),
                 hp: pokemon.data.stats[0].base_stat,
                 attack: pokemon.data.stats[1].base_stat,
                 defense: pokemon.data.stats[2].base_stat,
