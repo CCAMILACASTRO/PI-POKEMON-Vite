@@ -11,18 +11,13 @@ const Nav = () => {
 
     const dispatch = useDispatch();
 
-    const allTypes = useSelector((state) => state.types)
-
-    //Ciclo de vida del componente. Trae todos los tipos cuando se monta el componente.
-    // useEffect(() => {
-    //     dispatch(getAllTypes())
-    // }, [dispatch])
+    const allTypes = useSelector((state) => state.types) //trae el estado global de types.
 
 
     //Manejador del filtrado del pokemon segun su origen:
     const handleFilterCreated = (event) => { //toma la seleccion del onChange y maneja el evento con la action.
         event.preventDefault();
-        dispatch(filterCreated(event.target.value))
+        dispatch(filterCreated(event.target.value)) //despacha la action y toma el valor segun la opcion elegida
     }
 
     //Manejador del filtrado del pokemon segun su tipo:
@@ -43,9 +38,9 @@ const Nav = () => {
         dispatch(sortByAttack(event.target.value))
     }
 
-    //Para limpiar los filtros
-    const handleClick = (event) => {
-        event.preventDefault();
+    //Para limpiar los filtros y mostrar todos los pokemons.
+    const handleClick = (event) => { 
+        event.preventDefault(); //evita el comportamiento estandar de un evento.
         dispatch(cleanPokemons(dispatch))
         dispatch(getAllPokemons())
     }

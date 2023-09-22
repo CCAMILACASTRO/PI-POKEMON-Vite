@@ -26,7 +26,7 @@ const Detail = () => {
     return (
 
         <div className={styles.divDetail}>
-            <h2>INFORMACION GENERAL</h2>
+            <h2>INFORMACIÓN GENERAL</h2>
             <div className={styles.detailPokemon}>
                 <img className={styles.imgCard} src={pokemonId?.image} alt={pokemonId?.name}/>
                 <h2 className={styles.nameCard}>Nombre: {pokemonId?.name} </h2>

@@ -5,28 +5,25 @@ import { getPokemonByName } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 
 
-
-// const URL = 'http://localhost:3001/pokemon'
-
-
 const SearchBar = () =>{ //la barra de busqueda de pokemones.
 
     const dispatch = useDispatch();
-    const [pokemonName, setPokemonName] = useState('');
 
-    const handleChange = (event) => {
+    const [pokemonName, setPokemonName] = useState(''); //estado local que inicia en un string vacio
+
+    const handleChange = (event) => { //se ejecuta cuando el valor del input cambia.
         event.preventDefault();
-        setPokemonName(event.target.value);
+        setPokemonName(event.target.value); //actualiza el estado local con el valor del input.
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        dispatch(getPokemonByName(pokemonName));
-        setPokemonName('');
+    const handleSubmit = (event) => { //cuando aprieta el boton envia el formulario de busqueda.
+        event.preventDefault(); 
+        dispatch(getPokemonByName(pokemonName)); //despacha la action para buscar el pokemon por su nombre.
+        setPokemonName(''); //limpia el estado.
     }
 
 
-    const handleInput = (event) => {
+    const handleInput = (event) => { //se ejecuta cada vez que el valor del input cambia.
         event.preventDefault();
         setPokemonName(event.target.value.toLowerCase())
     }

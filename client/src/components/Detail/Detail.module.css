@@ -15,7 +15,7 @@
     grid-template-columns: repeat(2, auto);
     justify-items: center;
     align-items: center;
-    background-color: rgb(80, 0, 0, 0.5);
+    background-color: rgb(80, 0, 0, 0.8);
     border:rgb(80, 0, 0);
     border-style: double;
     border-radius: 10px;
@@ -27,14 +27,19 @@
     margin-right: auto;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(238, 221, 221);
-    box-shadow: 10px 10px 5px 0px rgb(0, 0, 0);
+    box-shadow: 5px 5px 5px 0px rgb(42, 1, 1);
    
 }
 
 h2{
     margin: 5px;
-    color:  rgb(83, 0, 0);
+    width: 300px;
+    padding: 5px;
+    margin-left: 120px;
+    text-align: left;
+    color:  rgb(187, 186, 179);
     font-family: 'Times New Roman', Times, serif;
+    box-shadow: 5px 5px 5px 0px rgb(78, 4, 4);
     font-size: xx-large;
 }
 
