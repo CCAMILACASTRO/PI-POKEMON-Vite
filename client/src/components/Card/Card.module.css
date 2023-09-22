@@ -1,7 +1,6 @@
 .divCard{
     display: flex;
     flex-direction: column;
-    margin-top: 120px;
     align-items: center;
     padding: 15px;
     width: auto;

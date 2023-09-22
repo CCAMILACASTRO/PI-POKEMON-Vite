@@ -18,10 +18,9 @@ const Detail = () => {
 //simula los 3 ciclos de vida de un componente funcional.
     useEffect(() => {
         dispatch(getPokemonByID(id)) //montaje
-        return () => { dispatch(cleanDetail())} //desmontaje
-    }, [id]) //Actualizacion (Es cuando el usuario pone el numero de id que esta buscando y ese id se actualiza)
+        dispatch(cleanDetail(id)) //desmontaje
+    }, [dispatch, id]) //Actualizacion (Es cuando el usuario pone el numero de id que esta buscando y ese id se actualiza)
 
-    // console.log(pokemonId)
 
 
     return (
@@ -30,7 +29,7 @@ const Detail = () => {
             <h2>INFORMACION GENERAL</h2>
             <div className={styles.detailPokemon}>
                 <img className={styles.imgCard} src={pokemonId?.image} alt={pokemonId?.name}/>
-                <h2 className={styles.nameCard}>Nombre: {pokemonId?.name.toUpperCase()} </h2>
+                <h2 className={styles.nameCard}>Nombre: {pokemonId?.name} </h2>
                  
 
                 <div className={styles.divInfo}>

@@ -15,7 +15,7 @@ import {
 
 const initialState = {
     pokemon: [],
-    allPokemons: [], //{}
+    allPokemons: [],
     detail: [],
     types: [],
 }
