@@ -15,10 +15,10 @@ const Pagination = ({pokemonsPage, allPokemons, pagination}) => { //trae las pro
             <div className={styles.divPage}>
 
                 {
-                    pageNumbers?.map((number) => { //mapea cada pagina y crea un boton para cada una y cuando hace click cambia de pagina
+                    pageNumbers?.map((pageNumber) => { //mapea cada pagina y crea un boton para cada una y cuando hace click cambia de pagina
                         return (
-                            <div className={styles.items} key={number}> 
-                                <button className={styles.buttonPage} onClick={() => pagination(number)}>{number}</button>
+                            <div className={styles.items} key={pageNumber}> 
+                                <button className={styles.buttonPage} onClick={() => pagination(pageNumber)}>{pageNumber}</button>
                             </div>                            
                         )
                     })

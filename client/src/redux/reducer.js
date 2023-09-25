@@ -66,7 +66,7 @@ const reducer = (state= initialState, action) => {
         case FILTER_CREATED: 
             const allPokemonsCopy = [...state.pokemon];
             let createdFiltered;
-            if(action.payload === 'DB') {
+            if(action.payload === 'DB') { 
                 createdFiltered = allPokemonsCopy.filter((pokemon) => pokemon.createdInDb );
             } else if (action.payload === 'API') {
                 createdFiltered = allPokemonsCopy.filter((pokemon) => !pokemon.createdInDb );
@@ -79,7 +79,6 @@ const reducer = (state= initialState, action) => {
             }
             
         case FILTER_TYPE:
-
             const typesCopy = [...state.pokemon];
             let typeFiltered;
             if (action.payload === 'ALL') {

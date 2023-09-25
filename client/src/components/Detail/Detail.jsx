@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getPokemonByID, cleanDetail } from '../../redux/actions';
+import { getPokemonByID, cleanDetail, getAllPokemons } from '../../redux/actions';
 
 const Detail = () => {
 
@@ -19,6 +19,7 @@ const Detail = () => {
     useEffect(() => {
         dispatch(getPokemonByID(id)) //montaje
         dispatch(cleanDetail(id)) //desmontaje
+        return () => dispatch(getAllPokemons())
     }, [dispatch, id]) //Actualizacion (Es cuando el usuario pone el numero de id que esta buscando y ese id se actualiza)
 
 

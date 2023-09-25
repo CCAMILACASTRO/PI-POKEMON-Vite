@@ -20,6 +20,7 @@ const SearchBar = () =>{ //la barra de busqueda de pokemones.
         event.preventDefault(); 
         dispatch(getPokemonByName(pokemonName)); //despacha la action para buscar el pokemon por su nombre.
         setPokemonName(''); //limpia el estado.
+        
     }
 
 

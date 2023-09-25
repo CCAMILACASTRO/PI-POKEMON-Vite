@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './Nav.module.css';
 import SearchBar from '../SearchBar/SearchBar';
 import { Link } from 'react-router-dom';
-// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterCreated, sortByName, sortByAttack, filterType, getAllPokemons, cleanPokemons } from '../../redux/actions'
 
@@ -62,7 +61,7 @@ const Nav = () => {
                 </select>
 
                 <select className={styles.selectPokemon} onChange={(event) => handleFilterType(event)} >
-                    <option value="ALL">All Pokemons</option>
+                    <option value="ALL">ALL POKEMONS</option>
                     {
                         allTypes?.map((type) =>{
                             return (
@@ -88,14 +87,14 @@ const Nav = () => {
                 </select>
             </div>
             
-
-            <SearchBar/>
-
             <button
                 className={styles.buttonClean}
                 type='submit'
                 onClick={(event) => handleClick(event)}
                 > Limpiar Filtros </button>
+
+            <SearchBar/>
+
 
             <Link to='/pokemons/create'>
                 <button  className={styles.buttonCreate}> Crear Pokemon </button>
