@@ -16,7 +16,6 @@ const getPokemonsApiById = async (id) => {
                 id: pokemon.data.id,
                 name: pokemon.data.name,
                 image: pokemon.data.sprites.other.dream_world.front_default,  // url imagen
-                //types: pokemon.data.types.map((pokemon) => pokemon.type.name), //devuelve un array con los tipos de p
                 Types: pokemon.data.types.map((pokemon) => { return {name: pokemon.type.name}}),
                 hp: pokemon.data.stats[0].base_stat,
                 attack: pokemon.data.stats[1].base_stat,

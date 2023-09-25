@@ -66,8 +66,8 @@ pokemonRouter.post('/', async(req, res) => { //pokemon creado por el usuario en 
     try {
         const createPokemon = req.body; //envia los datos del formulario por body.
 
+        console.log(createPokemon)
         const newPokemon = await postPokemon(createPokemon) //ejecuta la funcion para guardar los datos del nuevo pokemon
-
         if(newPokemon.error) return res.status(404).json(error.message)
 
         return res.status(200).json(newPokemon) // si sale todo bien envia el nuevo pokemon

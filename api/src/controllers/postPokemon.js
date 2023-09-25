@@ -2,14 +2,15 @@ const { Pokemon, Type } = require('../db')
 
 const postPokemon = async (createPokemon) => {  //me llega por body , en forma de objeto,  los datos del pokemon creado en el formulario. 
 
-
+    
     const { name, image, types, hp, attack, defense, speed, height, weight, createdInDb } = createPokemon;
-
+    console.log(createPokemon)
     let typesDb = await Type.findOne({where: { name: types}})
 
     if (!name || !image || !types) { //Si no manda las props obligatorias lanza un error.
 
         throw Error  ('Faltan datos');
+        
     } else if (!typesDb) {
         throw Error ('El tipo de pokemon seleccionado no existe')
     }
