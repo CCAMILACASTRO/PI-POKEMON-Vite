@@ -84,10 +84,10 @@ const Form = () => {
     }
 
    
-    const handleDelete = (type) => {
+    const handleDelete = (tipo) => {
         setForm({
             ...form,
-            types: form.types.filter((type) => type !== type)
+            types: form.types.filter((type) => type !== tipo)
         });
     }
 
