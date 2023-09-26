@@ -52,6 +52,10 @@ const Nav = () => {
                 <button  className={styles.buttonBack}> Inicio </button>
             </Link>
 
+            <Link to={`/pokemons/`} >
+                        <button className={styles.buttonBack} >Home</button>
+            </Link>
+
             <div className={styles.divSelect}>
                 <select className={styles.selectPokemon} onChange={(event) => handleFilterCreated(event)}>
                     <option value="ALL">ORIGEN</option>

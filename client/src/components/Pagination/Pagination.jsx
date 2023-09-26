@@ -5,7 +5,7 @@ const Pagination = ({pokemonsPage, allPokemons, pagination}) => { //trae las pro
 
     const pageNumbers = []; //creo un array para almacenar los numeros de paginas
 
-    for(let i = 1; i < Math.ceil(allPokemons/pokemonsPage); i++){ //Math.ceil redondea hacia arriba
+    for(let i = 1; i <= Math.ceil(allPokemons/pokemonsPage); i++){ //Math.ceil redondea hacia arriba
         pageNumbers.push(i)
     } //para calcular cuantas paginas se necesitan para renderizar los pokemones necesarios por pagina
 

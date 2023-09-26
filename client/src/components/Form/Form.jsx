@@ -1,12 +1,9 @@
 import React from 'react';
 import styles from './Form.module.css';
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllTypes, createPokemon, cleanPokemons } from '../../redux/actions';
+import { getAllTypes, createPokemon, cleanPokemons, getAllPokemons } from '../../redux/actions';
 import validations from './validations';
-
-
 
 
 const Form = () => {
@@ -19,7 +16,6 @@ const Form = () => {
     useEffect(() => {
         dispatch(getAllTypes())
     }, [dispatch]);
-
 
     
     const [ form, setForm ] = useState({ //estado local del formulario
@@ -34,15 +30,6 @@ const Form = () => {
         weight: 0,
     });
 
-    const useNameExists = (name) => { //funcion para verificar si un nombre existe
-        const allPokemons = useSelector((state) => state.allPokemons)
-        
-        return allPokemons.some((pokemon) => pokemon.name.toLowerCase() === name.toLowerCase()
-        );
-    };
-
-
-    const nameExists = useNameExists(form.name);
 
 //Crea una función llamada handleChange que nos permita reflejar el texto ingresado de los inputs en nuestro estado local.
     const handleChange = (event) => {
@@ -58,6 +45,17 @@ const Form = () => {
     }
 
 
+    
+    const useNameExists = (name) => { //funcion para verificar si un nombre existe
+        const allPokemons = useSelector((state) => state.allPokemons)
+    
+        return Array.from(allPokemons).includes((pokemon) => pokemon.name.toLowerCase() === name.toLowerCase());
+    };
+
+
+    const nameExists = useNameExists(form.name);
+
+    
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -74,21 +72,22 @@ const Form = () => {
                 height: 0,
                 weight: 0,
             });
-            dispatch(cleanPokemons(dispatch));
-            alert('El pokemon fue creado exitosamente!');
+            dispatch(getAllPokemons());
+            alert('El pokemon fue creado exitosamente');
         } else {
             setErrors({
                 ...errors,
-                name: 'Ya existe un pokemon con ese nombre, elija otro nombre.'
+                name: 'El pokemón ya existe, elija otro nombre.'
             });
             alert('Error al crear el pokemon!');
         }
     }
 
+   
     const handleDelete = (type) => {
         setForm({
             ...form,
-            types: form.types.filter((t) => t !== type)
+            types: form.types.filter((type) => type !== type)
         });
     }
 
@@ -125,7 +124,7 @@ const Form = () => {
 
                 <div className={styles.divInputsForm}>
                     <label htmlFor="life">Vida: </label>
-                    <input type="text" name="hp" onChange={handleChange} placeholder="Vida" value={form.hp} />
+                    <input type="number" name="hp" onChange={handleChange} placeholder="Vida" value={form.hp} />
                     {errors.hp && <p className={styles.pErrors}> {errors.hp} </p>}
                 </div>
 
@@ -190,14 +189,10 @@ const Form = () => {
                     </div>
                     {errors.types && <p className={styles.pErrors}> {errors.types} </p>}
 
-                    <button type="submit" className={styles.buttonForm} 
-                    disabled={!form.name || !form.image || !form.types }>
+                    <button type="submit" className={styles.buttonForm} >
                         Crear Pokemon
                     </button>
 
-                    <Link to={`/pokemons/`} >
-                        <button className={styles.buttonForm}>Volver</button>
-                    </Link>
                 </div>
             </form>
         </div>
@@ -207,3 +202,47 @@ const Form = () => {
 export default Form;
 
 
+
+
+
+
+
+
+    // const useNameExists = (name) => { //funcion para verificar si un nombre existe
+    //     const allPokemons = useSelector((state) => state.allPokemons)
+    //     console.log(allPokemons)
+        
+    //     return allPokemons.some((pokemon) => pokemon.name.toLowerCase() === name.toLowerCase()
+    //     );
+    // };
+
+
+    // const nameExists = useNameExists(form.name);
+
+
+ // const handleSubmit = (event) => {
+    //     event.preventDefault();
+
+    //     if (!nameExists) {
+    //         dispatch(createPokemon(form));
+    //         setForm({
+    //             name: "",
+    //             image: "",
+    //             types: [], //cualquier cosa cambiar a Types.
+    //             hp: 0,
+    //             attack: 0,
+    //             defense: 0,
+    //             speed: 0,
+    //             height: 0,
+    //             weight: 0,
+    //         });
+    //         dispatch(cleanPokemons(dispatch));
+    //         alert('El pokemon fue creado exitosamente!');
+    //     } else {
+    //         setErrors({
+    //             ...errors,
+    //             name: 'Ya existe un pokemon con ese nombre, elija otro nombre.'
+    //         });
+    //         alert('Error al crear el pokemon!');
+    //     }
+    // }

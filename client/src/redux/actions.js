@@ -97,9 +97,12 @@ export const createPokemon = (createPokemon) => {
             
             
         } catch (error) {
-            return response.status(404).json({error: error.message})                
+            return response.status(404).json({error: error.message}) 
+                     
         }
+        
     }
+    
 }
 
 //filtros por origen

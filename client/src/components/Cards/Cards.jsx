@@ -16,7 +16,7 @@ const Cards = () => {
     const lastPokemon = currentPage * pokemonsPage; 
     const firstPokemon = lastPokemon - pokemonsPage;
     //para calcular el indice del ultimo y primera pokemon en funcion de la pagina actual y la cantidad de pokemons.
-    const currentPokemons = allPokemons.slice(firstPokemon, lastPokemon);
+    const currentPokemons = Array.from(allPokemons).slice(firstPokemon, lastPokemon);
     //array para mostrar los pokemones de la pagina actual.
 
     const pagination = (pageNumber) => { //funcion para cambiar la pagina actual
