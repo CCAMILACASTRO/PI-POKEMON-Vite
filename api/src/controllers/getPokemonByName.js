@@ -52,7 +52,7 @@ const getPokemonDbByName = async(name) => {
 
         return pokemonDbName; //retorna el pokemon encontrado junto con el tipo.
     } catch(error){  // capta el error si no encontró un pokemon.
-        return error;
+        return null;
     }
 }
 
