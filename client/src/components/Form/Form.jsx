@@ -189,7 +189,7 @@ const Form = () => {
                     </div>
                     {errors.types && <p className={styles.pErrors}> {errors.types} </p>}
 
-                    <button type="submit" className={styles.buttonForm} >
+                    <button type="submit" className={styles.buttonForm} disabled={!form.name || !form.image || !form.types}>
                         Crear Pokemon
                     </button>
 
@@ -203,46 +203,3 @@ export default Form;
 
 
 
-
-
-
-
-
-    // const useNameExists = (name) => { //funcion para verificar si un nombre existe
-    //     const allPokemons = useSelector((state) => state.allPokemons)
-    //     console.log(allPokemons)
-        
-    //     return allPokemons.some((pokemon) => pokemon.name.toLowerCase() === name.toLowerCase()
-    //     );
-    // };
-
-
-    // const nameExists = useNameExists(form.name);
-
-
- // const handleSubmit = (event) => {
-    //     event.preventDefault();
-
-    //     if (!nameExists) {
-    //         dispatch(createPokemon(form));
-    //         setForm({
-    //             name: "",
-    //             image: "",
-    //             types: [], //cualquier cosa cambiar a Types.
-    //             hp: 0,
-    //             attack: 0,
-    //             defense: 0,
-    //             speed: 0,
-    //             height: 0,
-    //             weight: 0,
-    //         });
-    //         dispatch(cleanPokemons(dispatch));
-    //         alert('El pokemon fue creado exitosamente!');
-    //     } else {
-    //         setErrors({
-    //             ...errors,
-    //             name: 'Ya existe un pokemon con ese nombre, elija otro nombre.'
-    //         });
-    //         alert('Error al crear el pokemon!');
-    //     }
-    // }
