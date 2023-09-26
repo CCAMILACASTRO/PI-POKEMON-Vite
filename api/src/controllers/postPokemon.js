@@ -4,10 +4,10 @@ const postPokemon = async (createPokemon) => {  //me llega por body , en forma d
 
     
     const { name, image, types, hp, attack, defense, speed, height, weight, createdInDb } = createPokemon;
-    console.log(createPokemon)
+    
     let typesDb = await Type.findOne({where: { name: types}})
 
-    if (!name || !image || !types) { //Si no manda las props obligatorias lanza un error.
+    if (!name || !image || !types || !hp || !attack || !defense) { //Si no manda las props obligatorias lanza un error.
 
         throw Error  ('Faltan datos');
         
