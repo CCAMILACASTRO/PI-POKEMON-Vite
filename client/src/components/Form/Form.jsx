@@ -14,14 +14,14 @@ const Form = () => {
 
     
     useEffect(() => {
-        dispatch(getAllTypes())
+        dispatch(getAllTypes()) //despacho todos los tipos cuando se monta el componente.
     }, [dispatch]);
 
     
     const [ form, setForm ] = useState({ //estado local del formulario
         name: "",
         image: "",
-        types: [], //cualquier cosa cambiar a Types.
+        types: [], 
         hp: 0,
         attack: 0,
         defense: 0,
@@ -32,8 +32,8 @@ const Form = () => {
 
 
 //Crea una función llamada handleChange que nos permita reflejar el texto ingresado de los inputs en nuestro estado local.
-    const handleChange = (event) => {
-        event.preventDefault();
+    const handleChange = (event) => { //se ejecuta cada vez que se cambia un campo del formulario.
+        event.preventDefault(); //para que no se recargue la pagina.
         setForm ({
             ...form,
             [event.target.name]: event.target.value
@@ -46,7 +46,7 @@ const Form = () => {
 
 
     
-    const useNameExists = (name) => { //funcion para verificar si un nombre existe
+    const useNameExists = (name) => { //funcion para verificar si un nombre de un pokemon existe.
         const allPokemons = useSelector((state) => state.allPokemons)
     
         return Array.from(allPokemons).some((pokemon) => pokemon.name.toLowerCase() === name.toLowerCase());
@@ -56,15 +56,15 @@ const Form = () => {
     const nameExists = useNameExists(form.name);
 
     
-    const handleSubmit = (event) => {
+    const handleSubmit = (event) => { // se ejecuta cuando el usuario envía el formulario
         event.preventDefault();
 
-        if (!nameExists) {
-            dispatch(createPokemon(form));
+        if (!nameExists) { // verifica si el nombre de Pokémon ya existe 
+            dispatch(createPokemon(form)); //envía los datos del formulario al servidor a través de la acción createPokemon de Redux
             setForm({
                 name: "",
                 image: "",
-                types: [], //cualquier cosa cambiar a Types.
+                types: [], 
                 hp: 0,
                 attack: 0,
                 defense: 0,
@@ -83,23 +83,25 @@ const Form = () => {
         }
     }
 
-   
-    const handleDelete = (tipo) => {
-        setForm({
-            ...form,
-            types: form.types.filter((type) => type !== tipo)
-        });
-    }
-
-    const handleTypeChange = (event) => {
+    const handleTypeChange = (event) => { //permite agregar tipos de pokemones
         const selectedType = event.target.value;
-        if (!form.types.includes(selectedType) && form.types.length < 2) {
-            setForm({
+        if (!form.types.includes(selectedType) && form.types.length < 2) { //verifica si el tipo de Pokémon seleccionado no está incluido y si es menor a 2
+            setForm({ //si ambas se cumplen actualiza el estado form
                 ...form,
-                types: [...form.types, selectedType]
+                types: [...form.types, selectedType] //asegura que los tipos seleccionados se mantengan en el estado form.
             });
         }
     }
+
+   
+    const handleDelete = (tipo) => { //permite eliminar la seleccion de tipos de pokemon que quiere eliminar.
+        setForm({
+            ...form,
+            types: form.types.filter((type) => type !== tipo) // crea un nuevo array de tipos que excluye el tipo que se deseaba eliminar.
+        });
+    }
+
+    
 
 
     return (

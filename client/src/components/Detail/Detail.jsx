@@ -19,7 +19,7 @@ const Detail = () => {
     useEffect(() => {
         dispatch(getPokemonByID(id)) //montaje
         dispatch(cleanDetail(id)) //desmontaje
-        return () => dispatch(getAllPokemons())
+        dispatch(getAllPokemons())
     }, [dispatch, id]) //Actualizacion (Es cuando el usuario pone el numero de id que esta buscando y ese id se actualiza)
 
 

@@ -37,7 +37,7 @@ h2{
     padding: 5px;
     margin-left: 120px;
     text-align: left;
-    color:  rgb(187, 186, 179);
+    color:  rgb(218, 217, 212);
     font-family: 'Times New Roman', Times, serif;
     box-shadow: 5px 5px 5px 0px rgb(78, 4, 4);
     font-size: xx-large;
@@ -55,7 +55,7 @@ h5{
 .imgCard{
     margin: 20px;
     width: 200px;
-    height:auto;
+    height:200px;
 }
 
 .divTipos{

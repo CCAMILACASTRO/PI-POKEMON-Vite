@@ -8,15 +8,16 @@ import Pagination from '../Pagination/Pagination';
 
 const Cards = () => {
 
-    const allPokemons = useSelector((state) => state.allPokemons) //trae el estado global allPokemons.
+    const allPokemons = useSelector((state) => state.allPokemons) //trae el estado global allPokemons con todos los pokemones de la app.
 
     const [currentPage, setCurrentPage] = useState(window.localStorage.getItem('currentPage')); //estado local con el valor de currentPage
     //guarda en el navegador la variable para realizar un seguimiento de la página actual en la que se encuentra el usuario.
     const [pokemonsPage, setPokemonsPage] = useState(12) //para establecer la cantidad de pokemones por pagina.
-    const lastPokemon = currentPage * pokemonsPage; 
+    
+    const lastPokemon = currentPage * pokemonsPage; //se hace para determinar cuál es el último Pokémon que debe mostrarse en la página actual.
     const firstPokemon = lastPokemon - pokemonsPage;
     //para calcular el indice del ultimo y primera pokemon en funcion de la pagina actual y la cantidad de pokemons.
-    const currentPokemons = Array.from(allPokemons).slice(firstPokemon, lastPokemon);
+    const currentPokemons = Array.from(allPokemons).slice(firstPokemon, lastPokemon); 
     //array para mostrar los pokemones de la pagina actual.
 
     const pagination = (pageNumber) => { //funcion para cambiar la pagina actual
@@ -32,9 +33,9 @@ const Cards = () => {
     return (
         <div className={styles.div}>
             <Pagination
-                pokemonsPage={pokemonsPage}
-                allPokemons={allPokemons.length}
-                pagination={pagination}
+                pokemonsPage={pokemonsPage} // cantidad de Pokémon que se mostrarán en cada página.
+                allPokemons={allPokemons.length} //es el número total de Pokémon que se va a paginar.
+                pagination={pagination} //toma un número de página como argumento y  se utiliza para actualizar el estado del componente principal que renderiza la lista de Pokémon.
             />
 
 
