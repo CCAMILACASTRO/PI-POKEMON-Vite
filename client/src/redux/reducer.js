@@ -38,7 +38,7 @@ const reducer = (state= initialState, action) => {
         case CLEAN_DETAIL:
             return {
                 ...state,
-                pokemon: action.payload,
+                detail: action.payload,
             }
         case CLEAN_POKEMONS:
             return {
