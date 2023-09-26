@@ -5,9 +5,11 @@ import { getPokemonByName } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 
 
+
 const SearchBar = () =>{ //la barra de busqueda de pokemones.
 
     const dispatch = useDispatch();
+    
 
     const [pokemonName, setPokemonName] = useState(''); //estado local que inicia en un string vacio
 
@@ -19,8 +21,7 @@ const SearchBar = () =>{ //la barra de busqueda de pokemones.
     const handleSubmit = (event) => { //cuando aprieta el boton envia el formulario de busqueda.
         event.preventDefault(); 
         dispatch(getPokemonByName(pokemonName)); //despacha la action para buscar el pokemon por su nombre.
-        setPokemonName(''); //limpia el estado.
-        
+        setPokemonName(''); //limpia el estado.        
     }
 
 
@@ -28,6 +29,8 @@ const SearchBar = () =>{ //la barra de busqueda de pokemones.
         event.preventDefault();
         setPokemonName(event.target.value.toLowerCase())
     }
+
+    
 
     return (
         <div >

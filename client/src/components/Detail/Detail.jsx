@@ -18,8 +18,9 @@ const Detail = () => {
 //simula los 3 ciclos de vida de un componente funcional.
     useEffect(() => {
         dispatch(getPokemonByID(id)) //montaje
-        return () => dispatch(cleanDetail(id), dispatch(getAllPokemons()))//desmontaje: limpia y trae todos los pokemons nuevamente.
-    }, [id]) //Actualizacion (Es cuando el usuario pone el numero de id que esta buscando y ese id se actualiza)
+        dispatch(getAllPokemons())
+        return () => dispatch(cleanDetail(id), )//desmontaje: limpia y trae todos los pokemons nuevamente.
+    }, [dispatch, id]) //Actualizacion (Es cuando el usuario pone el numero de id que esta buscando y ese id se actualiza)
 
 
 

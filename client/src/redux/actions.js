@@ -66,10 +66,11 @@ export const getPokemonByName = (name) => {
             return dispatch({ type: GET_POKEMON_NAME, payload: pokemonName.data });
 
         } catch (error) {
-            return response.status(404).json({ error: error.message });
+            alert(error.response.data.message)               
         }
     };
 }
+
 
 //Obtener todos los Tipos de pokemones:
 export const getAllTypes = () => {

@@ -16,7 +16,7 @@ const Home = () => {
     useEffect (() => { // realiza acciones cuando el componente se monta o cambia el estado allPokemons.
         window.localStorage.setItem('currentPage', 1) //para guardar en el navegador la pagina donde se encuentra el usuario.
         if(allPokemons.length === 0){ //si el estado es = 0 se despachan las actions.
-            dispatch( getAllPokemons() ) //cuando se monta el componente hace el dispatch de la action para traer todos los pokemons.
+            dispatch( getAllPokemons(), getAllTypes() ) //cuando se monta el componente hace el dispatch de la action para traer todos los pokemons.
             dispatch(getAllTypes()) // cuando se monta el componente despacha la action para traer todos los tipos de pokemons.
         }
     }, [allPokemons]) //array de dependencia para que quede atento a los cambios del estado allPokemons.
