@@ -44,7 +44,7 @@ const Form = () => {
         }, errors))  // El objeto que retorna la funcion validation, se guarda en el estado errors y es lo que permite mostrar luego el mensaje de error.
     }
 
-//
+
     
     const useNameExists = (name) => { //funcion para verificar si un nombre existe
         const allPokemons = useSelector((state) => state.allPokemons)
