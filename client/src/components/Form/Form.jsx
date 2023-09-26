@@ -49,7 +49,7 @@ const Form = () => {
     const useNameExists = (name) => { //funcion para verificar si un nombre existe
         const allPokemons = useSelector((state) => state.allPokemons)
     
-        return Array.from(allPokemons).includes((pokemon) => pokemon.name.toLowerCase() === name.toLowerCase());
+        return Array.from(allPokemons).some((pokemon) => pokemon.name.toLowerCase() === name.toLowerCase());
     };
 
 
