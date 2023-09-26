@@ -191,7 +191,7 @@ const Form = () => {
                     </div>
                     {errors.types && <p className={styles.pErrors}> {errors.types} </p>}
 
-                    <button type="submit" className={styles.buttonForm} disabled={!form.name || !form.image || !form.types}>
+                    <button type="submit" className={styles.buttonForm} disabled={!form.name || !form.image || !form.types || !form.hp || !form.attack || !form.defense}>
                         Crear Pokemon
                     </button>
 
