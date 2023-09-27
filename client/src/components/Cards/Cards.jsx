@@ -8,36 +8,33 @@ import Pagination from '../Pagination/Pagination';
 
 const Cards = () => {
 
-    const allPokemons = useSelector((state) => state.allPokemons) //trae el estado global allPokemons con todos los pokemones de la app.
-
+    const allPokemons = useSelector((state) => state.allPokemons) 
     const [currentPage, setCurrentPage] = useState(window.localStorage.getItem('currentPage')); //estado local con el valor de currentPage
-    //guarda en el navegador la variable para realizar un seguimiento de la página actual en la que se encuentra el usuario.
-    const [pokemonsPage, setPokemonsPage] = useState(12) //para establecer la cantidad de pokemones por pagina.
+    const [pokemonsPage, setPokemonsPage] = useState(12) 
     
-    const lastPokemon = currentPage * pokemonsPage; //se hace para determinar cuál es el último Pokémon que debe mostrarse en la página actual.
-    const firstPokemon = lastPokemon - pokemonsPage;
-    //para calcular el indice del ultimo y primera pokemon en funcion de la pagina actual y la cantidad de pokemons.
-    const currentPokemons = Array.from(allPokemons).slice(firstPokemon, lastPokemon); 
-    //array para mostrar los pokemones de la pagina actual.
+    const lastPokemon = currentPage * pokemonsPage; //último Pokémon de la pagina actual.
+    const firstPokemon = lastPokemon - pokemonsPage; //primera pokemon en funcion de la pagina actual y la cantidad de pokemons.
+    const currentPokemons = Array.from(allPokemons).slice(firstPokemon, lastPokemon); //pokemones de la pag actual
+    
 
-    const pagination = (pageNumber) => { //funcion para cambiar la pagina actual
+    const pagination = (pageNumber) => { //cambiar la pagina actual
         setCurrentPage(pageNumber); //actualiza el estado con el numero de la pagina
-        window.localStorage.setItem('currentPage', pageNumber) //actualiza el valor en el almacenamiento local para que la página actual se conserve
+        window.localStorage.setItem('currentPage', pageNumber) //para que la página actual se conserve
     };
 
 
-    if (!Array.isArray(allPokemons)) { //verifica si allPokemons no es un arreglo
+    if (!Array.isArray(allPokemons)) { 
         return 'No se pudieron cargar los pokemons';
     }
 
     return (
         <div className={styles.div}>
             <Pagination
-                pokemonsPage={pokemonsPage} // cantidad de Pokémon que se mostrarán en cada página.
-                allPokemons={allPokemons.length} //es el número total de Pokémon que se va a paginar.
-                pagination={pagination} //toma un número de página como argumento y  se utiliza para actualizar el estado del componente principal que renderiza la lista de Pokémon.
+                pokemonsPage={pokemonsPage} 
+                allPokemons={allPokemons.length} 
+                pagination={pagination} 
+                //toma un número de página como argumento para actualizar el estado del componente principal que renderiza la lista de Pokémon.
             />
-
 
             <div className={styles.divCards}>
             
@@ -53,7 +50,7 @@ const Cards = () => {
                 )
             })}
 
-        </div>
+            </div>
 
         </div>
         

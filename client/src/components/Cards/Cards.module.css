@@ -1,5 +1,6 @@
 .div{
     margin-top: 100px;
+    width: 95vw;
     display: flex;
     flex-direction: column;
 }
@@ -7,14 +8,13 @@
 
 .divCards{
     width: 95vw;
-    height: auto;
     display: grid;
     margin-left: auto;
     margin-right: auto;
     padding-top: 20px;
-    grid-template-columns: repeat(3,  300px);
+    grid-template-columns: repeat(auto-fill,  300px);
     grid-template-rows: repeat(4,400px);
-    column-gap: 20px;
+    column-gap: 40px;
     justify-content:center;
     align-content:flex-start;
     

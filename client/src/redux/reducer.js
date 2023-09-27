@@ -49,7 +49,7 @@ const reducer = (state= initialState, action) => {
             return {
                 ...state,
                 pokemon: action.payload,
-                allPokemons: action.payload, // Agrega los Pokémon buscados a allPokemons
+                allPokemons: action.payload, 
                 
             }
         case GET_ALL_TYPES:
@@ -100,9 +100,9 @@ const reducer = (state= initialState, action) => {
                 return { ...state, allPokemons: state.pokemon, // Usar los pokemons originales sin ordenar
                 };
 
-            } else {
+            } else { 
                 let nameSort = nameCopy.sort((a, b) => {
-                    if (a.name < b.name) return action.payload === 'ASD' ? -1 : 1;
+                    if (a.name < b.name) return action.payload === 'ASD' ? -1 : 1; 
                     if (a.name > b.name) return action.payload === 'DSC' ? -1 : 1;
                     return 0;
                 });

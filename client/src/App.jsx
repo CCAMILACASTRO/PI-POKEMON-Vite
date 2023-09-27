@@ -34,7 +34,7 @@ function App() {
 
     </div>
 
-  ); //MODIFICAR EL DETAIL/1 POR DETAIL/:ID
+  ); 
 }
 
 export default App;

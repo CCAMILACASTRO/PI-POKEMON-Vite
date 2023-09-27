@@ -31,6 +31,7 @@ export const getAllPokemons = () => {
     };
 }
 
+
 //Obtener un pokemon segun su ID:
 export const getPokemonByID = (id) => {
     return async (dispatch) => {
@@ -44,16 +45,6 @@ export const getPokemonByID = (id) => {
             return response.status(404).json({error: error.message})
         }
     }
-}
-
-//limpiar el detail:
-export const cleanDetail = () => {
-    return ({ type: CLEAN_DETAIL, payload: []})
-}
-
-//limpiar el pokemon buscado:
-export const cleanPokemons = (dispatch) => {
-    return dispatch({ type: CLEAN_POKEMONS, payload: []})
 }
 
 //Obtener un pokemon segun su nombre:
@@ -72,6 +63,18 @@ export const getPokemonByName = (name) => {
 }
 
 
+
+//limpiar el detail:
+export const cleanDetail = () => {
+    return ({ type: CLEAN_DETAIL, payload: []})
+}
+
+//limpiar el pokemon buscado:
+export const cleanPokemons = (dispatch) => {
+    return dispatch({ type: CLEAN_POKEMONS, payload: []})
+}
+
+
 //Obtener todos los Tipos de pokemones:
 export const getAllTypes = () => {
     return async (dispatch) => {
@@ -86,6 +89,7 @@ export const getAllTypes = () => {
         }
     }
 }
+
 
 //Crear un pokemon:
 export const createPokemon = (createPokemon) => {
@@ -106,6 +110,7 @@ export const createPokemon = (createPokemon) => {
     
 }
 
+
 //filtros por origen
 export const filterCreated = (pokemonCreated) => {
     return ({ type: FILTER_CREATED, payload: pokemonCreated })
@@ -117,6 +122,7 @@ export const sortByName = (name) => {
     return ({ type: SORT_NAME, payload: name})
 }
 
+
 //orden de mayor o menor por ataque
 export const sortByAttack = (attack) => {
     return ({ type: SORT_ATTACK, payload: attack})
@@ -125,8 +131,7 @@ export const sortByAttack = (attack) => {
 
 //filtro por tipo
 export const filterType = (types) => {
-    return ({ type: FILTER_TYPE, payload: types})
-    
+    return ({ type: FILTER_TYPE, payload: types})  
 }
 
 

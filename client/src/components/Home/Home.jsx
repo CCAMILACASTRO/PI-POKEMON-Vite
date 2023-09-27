@@ -9,20 +9,21 @@ import { getAllPokemons, getAllTypes } from '../../redux/actions';
 
 const Home = () => {
 
-    const dispatch = useDispatch() // para despachar la action al store
-    const allPokemons = useSelector((state) => state.allPokemons) //traigo el estado global de todos los pokemons.
+    const dispatch = useDispatch() 
+    const allPokemons = useSelector((state) => state.allPokemons) 
 
     // Ciclo de vida al componente
-    useEffect (() => { // realiza acciones cuando el componente se monta o cambia el estado allPokemons.
+    useEffect (() => { 
         window.localStorage.setItem('currentPage', 1) //para guardar en el navegador la pagina donde se encuentra el usuario.
-        if(allPokemons.length === 0){ //si el estado es = 0 se despachan las actions.
-            dispatch( getAllPokemons(), getAllTypes() ) //cuando se monta el componente hace el dispatch de la action para traer todos los pokemons.
-            dispatch(getAllTypes()) // cuando se monta el componente despacha la action para traer todos los tipos de pokemons.
+        if(allPokemons.length === 0){ 
+            dispatch( getAllPokemons() ) 
+            dispatch(getAllTypes()) 
         }
-    }, [dispatch, allPokemons]) //array de dependencia para que quede atento a los cambios del estado allPokemons.
+    }, [dispatch, allPokemons]) //queda atento al estado y al dispatch
 
     return ( 
         <div className={styles.divHome}>
+            
             <Nav/> 
             
             <Cards />

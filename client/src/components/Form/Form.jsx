@@ -2,14 +2,14 @@ import React from 'react';
 import styles from './Form.module.css';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllTypes, createPokemon, cleanPokemons, getAllPokemons } from '../../redux/actions';
+import { getAllTypes, createPokemon, getAllPokemons } from '../../redux/actions';
 import validations from './validations';
 
 
 const Form = () => {
 
     const [ errors, setErrors ] = useState({}); //estado local de errores.
-    const types = useSelector((state) => state.types); //traigo el estado global de tipos.
+    const types = useSelector((state) => state.types); 
     const dispatch = useDispatch();
 
     
@@ -31,22 +31,22 @@ const Form = () => {
     });
 
 
-//Crea una función llamada handleChange que nos permita reflejar el texto ingresado de los inputs en nuestro estado local.
+
     const handleChange = (event) => { //se ejecuta cada vez que se cambia un campo del formulario.
-        event.preventDefault(); //para que no se recargue la pagina.
+        event.preventDefault(); 
         setForm ({
             ...form,
             [event.target.name]: event.target.value
         })
-        setErrors(validations({  //La funcion setErrors se guarda el valor de la ejecucion de la funcion validation que es un objeto.
-            ...form,  //A validation le paso un objeto donde guarda una copia del estado y el valor de lo que pone el usuario en el input.
+        setErrors(validations({  //guarda el valor de la funcion validation que es un objeto.
+            ...form,  
             [event.target.name]: event.target.value, //Si llega a haber algun cambio, le aviso que se tiene que modificar alguna de las propiedades
-        }, event.target.name, errors))  // El objeto que retorna la funcion validation, se guarda en el estado errors y es lo que permite mostrar luego el mensaje de error.
+        }, event.target.name, errors))  //guarda el estado errors junto con lo que va completando el usuario.
     }
 
 
     
-    const useNameExists = (name) => { //funcion para verificar si un nombre de un pokemon existe.
+    const useNameExists = (name) => { 
         const allPokemons = useSelector((state) => state.allPokemons)
     
         return Array.from(allPokemons).some((pokemon) => pokemon.name.toLowerCase() === name.toLowerCase());
@@ -56,11 +56,11 @@ const Form = () => {
     const nameExists = useNameExists(form.name);
 
     
-    const handleSubmit = (event) => { // se ejecuta cuando el usuario envía el formulario
+    const handleSubmit = (event) => { // envía el formulario
         event.preventDefault();
 
-        if (!nameExists) { // verifica si el nombre de Pokémon ya existe 
-            dispatch(createPokemon(form)); //envía los datos del formulario al servidor a través de la acción createPokemon de Redux
+        if (!nameExists) { 
+            dispatch(createPokemon(form)); //envía los datos del formulario al servidor a través de la acción createPokemon 
             setForm({
                 name: "",
                 image: "",
@@ -86,7 +86,7 @@ const Form = () => {
     const handleTypeChange = (event) => { //permite agregar tipos de pokemones
         const selectedType = event.target.value;
         if (!form.types.includes(selectedType) && form.types.length < 2) { //verifica si el tipo de Pokémon seleccionado no está incluido y si es menor a 2
-            setForm({ //si ambas se cumplen actualiza el estado form
+            setForm({ //actualiza el estado form
                 ...form,
                 types: [...form.types, selectedType] //asegura que los tipos seleccionados se mantengan en el estado form.
             });
@@ -94,16 +94,14 @@ const Form = () => {
     }
 
    
-    const handleDelete = (tipo) => { //permite eliminar la seleccion de tipos de pokemon que quiere eliminar.
+    const handleDelete = (tipo) => { //eliminar la seleccion.
         setForm({
             ...form,
-            types: form.types.filter((type) => type !== tipo) // crea un nuevo array de tipos que excluye el tipo que se deseaba eliminar.
+            types: form.types.filter((type) => type !== tipo) //crea un nuevo array de tipos que excluye el tipo que se deseaba eliminar.
         });
     }
 
     
-
-
     return (
 
         <div className={styles.divForms}>
@@ -164,23 +162,19 @@ const Form = () => {
 
 
             <div className={styles.divSelectTypes}>
-
                 <h3 className={styles.tituloTipos}>Seleccionar Tipos:</h3>
-                <div className={styles.boxTipos}>
+                    
+                    <div className={styles.boxTipos}>
                         {types.map((type) => (
                             <div key={type.id} className="checkbox-seleccion">
                                 <div className={styles.divCheck}>
-                                    <input
-                                        type="checkbox"
-                                        value={type.name}
-                                        onChange={handleTypeChange}
-                                        checked={form.types.includes(type.name)}
-                                    />
+                                    <input type="checkbox" value={type.name} onChange={handleTypeChange} checked={form.types.includes(type.name)}/>
                                     {type.name}
                                 </div>
                             </div>
                         ))}
                     </div>
+
                     <div className={styles.divSeleccionados}>
                         {form.types.map((type) => (
                             <div key={type} className={styles.divSelecc}>
@@ -191,7 +185,9 @@ const Form = () => {
                     </div>
                     {errors.types && <p className={styles.pErrors}> {errors.types} </p>}
 
-                    <button type="submit" className={styles.buttonForm} disabled={!form.name || !form.image || !form.types || !form.hp || !form.attack || !form.defense}>
+                    <button type="submit" className={styles.buttonForm} 
+                    disabled={!form.name || !form.image || !form.types || !form.hp || !form.attack || !form.defense ||
+                    errors.name || errors.image || errors.types || errors.hp || errors.attack || errors.defense }>
                         Crear Pokemon
                     </button>
 

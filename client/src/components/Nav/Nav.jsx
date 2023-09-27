@@ -13,33 +13,33 @@ const Nav = () => {
     const allTypes = useSelector((state) => state.types) //trae el estado global de types.
 
 
-    //Manejador del filtrado del pokemon segun su origen:
-    const handleFilterCreated = (event) => { //toma la seleccion del onChange y maneja el evento con la action.
+    //filtrado del pokemon segun su origen:
+    const handleFilterCreated = (event) => { 
         event.preventDefault();
-        dispatch(filterCreated(event.target.value)) //despacha la action y toma el valor segun la opcion elegida
+        dispatch(filterCreated(event.target.value)) 
     }
 
-    //Manejador del filtrado del pokemon segun su tipo:
+    //filtrado del pokemon segun su tipo:
     const handleFilterType = (event) => {
         event.preventDefault();
         dispatch(filterType(event.target.value))
     }
 
-    //Manejador del ordenamiento de pokemons alfabeticamente por su nombre:
+    //ordenamiento de pokemons alfabeticamente por su nombre:
     const handleSortName = (event) => {
         event.preventDefault();
         dispatch(sortByName(event.target.value))
     }
 
-    //Manejador del ordenamiento de pokemons por su ataque:
+    //ordenamiento de pokemons por su ataque:
     const handleSortAttack = (event) => {
         event.preventDefault();
         dispatch(sortByAttack(event.target.value))
     }
 
-    //Para limpiar los filtros y mostrar todos los pokemons.
+    //limpiar los filtros y mostrar todos los pokemons.
     const handleClick = (event) => { 
-        event.preventDefault(); //evita el comportamiento estandar de un evento.
+        event.preventDefault(); 
         dispatch(cleanPokemons(dispatch))
         dispatch(getAllPokemons())
     }
