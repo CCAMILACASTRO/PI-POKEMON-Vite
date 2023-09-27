@@ -16,7 +16,7 @@ const SearchBar = () =>{
 
     const handleSubmit = (event) => { //guarda la info
         event.preventDefault();
-        dispatch(getPokemonByName(pokemonName)); //despacha la action para buscar el pokemon por su nombre.
+        dispatch(getPokemonByName(pokemonName)); 
         setPokemonName('');
     }
 
