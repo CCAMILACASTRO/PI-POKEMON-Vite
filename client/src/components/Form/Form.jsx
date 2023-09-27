@@ -22,12 +22,12 @@ const Form = () => {
         name: "",
         image: "",
         types: [], 
-        hp: 0,
-        attack: 0,
-        defense: 0,
-        speed: 0,
-        height: 0,
-        weight: 0,
+        hp: "",
+        attack: "",
+        defense: "",
+        speed: "",
+        height: "",
+        weight: "",
     });
 
 
@@ -65,12 +65,12 @@ const Form = () => {
                 name: "",
                 image: "",
                 types: [], 
-                hp: 0,
-                attack: 0,
-                defense: 0,
-                speed: 0,
-                height: 0,
-                weight: 0,
+                hp: "",
+                attack: "",
+                defense: "",
+                speed: "",
+                height: "",
+                weight: "",
             });
             dispatch(getAllPokemons());
             alert('El pokemon fue creado exitosamente');
@@ -124,37 +124,37 @@ const Form = () => {
 
                 <div className={styles.divInputsForm}>
                     <label htmlFor="life">Vida: </label>
-                    <input type="number" name="hp" onChange={handleChange} placeholder="Vida" value={form.hp} />
+                    <input type="text" name="hp" onChange={handleChange} placeholder="Vida" value={form.hp} />
                     {errors.hp && <p className={styles.pErrors}> {errors.hp} </p>}
                 </div>
 
                 <div className={styles.divInputsForm}>
                     <label htmlFor="attack">Ataque: </label>
-                    <input type="number" name="attack" onChange={handleChange} placeholder="Ataque" value={form.attack} />
+                    <input type="text" name="attack" onChange={handleChange} placeholder="Ataque" value={form.attack} />
                     {errors.attack && <p className={styles.pErrors}> {errors.attack} </p>}
                 </div>
 
                 <div className={styles.divInputsForm}>
                     <label htmlFor="defense">Defensa: </label>
-                    <input type="number" name="defense" onChange={handleChange} placeholder="Defensa" value={form.defense} />
+                    <input type="text" name="defense" onChange={handleChange} placeholder="Defensa" value={form.defense} />
                     {errors.defense && <p className={styles.pErrors}> {errors.defense} </p>}
                 </div>
 
                 <div className={styles.divInputsForm}>
                 <label htmlFor="speed">Velocidad: </label>
-                    <input type="number" name="speed" onChange={handleChange} placeholder="Velocidad" value={form.speed} />
+                    <input type="text" name="speed" onChange={handleChange} placeholder="Velocidad" value={form.speed} />
                     {errors.speed && <p className={styles.pErrors}> {errors.speed} </p>}
                 </div>
 
                 <div className={styles.divInputsForm}>
                     <label htmlFor="height">Altura: </label>
-                    <input type="number" name="height" onChange={handleChange} placeholder="Altura" value={form.height} />
+                    <input type="text" name="height" onChange={handleChange} placeholder="Altura" value={form.height} />
                     {errors.height && <p className={styles.pErrors}> {errors.height} </p>}
                 </div>
 
                 <div className={styles.divInputsForm}>
                     <label htmlFor="weight">Peso: </label>
-                    <input type="number" name="weight" onChange={handleChange} placeholder="Peso" value={form.weight} />
+                    <input type="text" name="weight" onChange={handleChange} placeholder="Peso" value={form.weight} />
                     {errors.weight && <p className={styles.pErrors}> {errors.weight} </p>}
                 </div>
 
