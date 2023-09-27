@@ -12,21 +12,21 @@ pokemonRouter.get("/", async (req, res) => {
 
     const { name } = req.query;
 
-    if (name) { // si escribe un nombre buscar...
+    if (name) { 
 
       let pokemonName = await getPokemonApiByName(name); //busca en la API
 
-      if (pokemonName.error) { // si no se encontró el pokemon en la DB
+      if (pokemonName.error) { 
         pokemonName = await getPokemonDbByName(name);
       }
 
-      if (pokemonName.length) { // si hay coincidencia envia el pokemon encontrado
+      if (pokemonName.length) { 
         res.status(200).send(pokemonName);
       } else {
         res.status(404).json({message: `No se encontró un Pokémon con el nombre: ${name}`});
       }
 
-    } else {
+    } else { //si no envia un name ---> devuelve todos.
       let allPokemons = await getAllPokemons();
       return res.status(200).send(allPokemons);
     }
@@ -44,10 +44,10 @@ pokemonRouter.get("/:id", async (req, res) => {
 
     let pokemonId = null;
 
-    if (isNaN(id)) {  //si el id es un numero busca el pokemon...
-      pokemonId = await getPokemonsDbById(id); // busca en la base de datos
+    if (isNaN(id)) {  // verifica si id es numero...
+      pokemonId = await getPokemonsDbById(id); 
     } else {
-      pokemonId = await getPokemonsApiById(id); // busca en la api.
+      pokemonId = await getPokemonsApiById(id); 
     }
 
     if (pokemonId.error) {
@@ -62,19 +62,19 @@ pokemonRouter.get("/:id", async (req, res) => {
 });
 
 
-
+//pokemon creado por el usuario en el formulario.
 pokemonRouter.post("/", async (req, res) => {
-  //pokemon creado por el usuario en el formulario.
+  
   try {
-    const createPokemon = req.body; //envia los datos del formulario por body.
+    const createPokemon = req.body; 
 
-    console.log(createPokemon);
-    const newPokemon = await postPokemon(createPokemon); //ejecuta la funcion para guardar los datos del nuevo pokemon
+    const newPokemon = await postPokemon(createPokemon); //guardar los datos del nuevo pokemon
+    
     if (newPokemon.error) return res.status(404).json(error.message);
 
-    return res.status(200).json(newPokemon); // si sale todo bien envia el nuevo pokemon
+    return res.status(200).json(newPokemon); 
+    
   } catch (error) {
-    //si hay algun error envia un mensaje de error.
     return res.status(404).json({ error: error.message });
   }
 });

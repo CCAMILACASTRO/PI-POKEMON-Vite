@@ -5,7 +5,7 @@ const { getAllTypes } = require('../controllers/getTypes');
 typeRouter.get('/', async (req, res) => {
     try {
       
-      const allTypes = await getAllTypes(); // para obtener tipos desde la base de datos o de la api.
+      const allTypes = await getAllTypes(); // trae todos los tiposd de API y DB
       
       return res.status(200).json(allTypes);
        

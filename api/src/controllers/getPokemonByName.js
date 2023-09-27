@@ -8,11 +8,11 @@ const getPokemonApiByName = async (name) => {
     try{
         const pokemonsApiName = await axios.get(`${URL}/${name}`.toLowerCase()); //insensible a mayusculas o minusculas
 
-        if (pokemonsApiName) { //Si la respuesta de la api fue exitosa...
+        if (pokemonsApiName) { 
 
-            let pokemon = pokemonsApiName; //guarda la informacion recibida en la variable pokemon
+            let pokemon = pokemonsApiName; 
 
-            return [{ //retorna un objeto creado con los datos del pokemon encontrado en la api
+            return [{ //retorna el pokemon buscado con los datos especificos.
                 id: pokemon.data.id,
                 name: pokemon.data.name,
                 image: pokemon.data.sprites.other.dream_world.front_default,
@@ -29,7 +29,7 @@ const getPokemonApiByName = async (name) => {
             return null;
         }
 
-    } catch(error){ // capta el error si no encontró un pokemon.
+    } catch(error){ 
         return ({error});
     }
 };
@@ -51,7 +51,7 @@ const getPokemonDbByName = async(name) => {
         });
 
         return pokemonDbName; //retorna el pokemon encontrado junto con el tipo.
-    } catch(error){  // capta el error si no encontró un pokemon.
+    } catch(error){  
         return null;
     }
 }

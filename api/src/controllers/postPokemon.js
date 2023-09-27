@@ -1,14 +1,13 @@
 const { Pokemon, Type } = require('../db')
 
-const postPokemon = async (createPokemon) => {  //me llega por body , en forma de objeto,  los datos del pokemon creado en el formulario. 
+const postPokemon = async (createPokemon) => {  //objeto con los datos del pokemon creado en el formulario. 
 
     
     const { name, image, types, hp, attack, defense, speed, height, weight, createdInDb } = createPokemon;
     
     let typesDb = await Type.findOne({where: { name: types}})
 
-    if (!name || !image || !types || !hp || !attack || !defense) { //Si no manda las props obligatorias lanza un error.
-
+    if (!name || !image || !types || !hp || !attack || !defense) { //props obligatorias
         throw Error  ('Faltan datos');
         
     } else if (!typesDb) {
@@ -24,15 +23,15 @@ const postPokemon = async (createPokemon) => {  //me llega por body , en forma d
         throw Error ('El pokemón ya existe, elija otro nombre.');
     }
 
-    const pokemon = await Pokemon.create({ name, image, hp, attack, defense, speed, height, weight, createdInDb }); // crea un nuevo pokemon con estos atributos.
+    const pokemon = await Pokemon.create({ name, image, hp, attack, defense, speed, height, weight, createdInDb }); 
 
     let addTypes = await Type.findAll({ //Busca todos los tipos de pokemones en el modelo Type.
         where: { name: types }
     });
 
-    await pokemon.addTypes(addTypes); // le agrega al nuevo pokemon los tipos del modelo Type.
+    await pokemon.addTypes(addTypes); // Relacion Pokemon y Type
 
-    let newPokemon = await Pokemon.findByPk(pokemon.id, { //Busca el pokemon x id y le agrega el nombre del tipo que le corresponde
+    let newPokemon = await Pokemon.findByPk(pokemon.id, { //Busca el pokemon x id + nombre del tipo 
         include: {
             model: Type,
             attributes: ["name"],
@@ -42,7 +41,7 @@ const postPokemon = async (createPokemon) => {  //me llega por body , en forma d
         }
     });
 
-    return { message: 'El pokemon fue creado exitosamente', pokemon: newPokemon }; // retorna pokemon creado y mensaje.
+    return { message: 'El pokemon fue creado exitosamente', pokemon: newPokemon }; 
         
 };
 

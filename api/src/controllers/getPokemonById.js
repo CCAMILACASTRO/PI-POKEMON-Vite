@@ -3,16 +3,17 @@ const URL = 'https://pokeapi.co/api/v2/pokemon/'
 const { Pokemon, Type } = require('../db')
 
 
+//Busca un pokemon de la API segun su id.
 const getPokemonsApiById = async (id) => {
     
     try{
         const pokemonApiId = await axios.get(`${URL}/${id}`);
 
-        if (pokemonApiId) { //Si la respuesta de la api fue exitosa...
+        if (pokemonApiId) { 
            
-            let pokemon = pokemonApiId; //guarda la informacion recibida en la variable pokemon
+            let pokemon = pokemonApiId; 
 
-            return { //retorna un objeto creado con los datos del pokemon encontrado en la api
+            return { //objeto con los datos especificos del pokemon.
                 id: pokemon.data.id,
                 name: pokemon.data.name,
                 image: pokemon.data.sprites.other.dream_world.front_default,  // url imagen
@@ -34,12 +35,13 @@ const getPokemonsApiById = async (id) => {
 };
 
 
+//Busca un pokemon de la DB segun su id.
 const getPokemonsDbById = async(id) => {
 
     try {
-        const pokemonDbId = await Pokemon.findOne({   //Busca en la base de datos por id y si coincide con el id del modelo Type.
+        const pokemonDbId = await Pokemon.findOne({   //Busca por id y si y por id del modelo Type.
             where: { id: id},
-            include: [{ //incluye informacion del modelo Type.
+            include: [{ 
                 attributes: ['name'],
                 model: Type,
                 through: {
@@ -47,7 +49,7 @@ const getPokemonsDbById = async(id) => {
                 }
             }]
         })
-        return pokemonDbId; //retorna el pokemon encontrado junto con el tipo.
+        return pokemonDbId; //retorna el pokemon encontrado + tipo
 
     } catch (error) {
         return null;
