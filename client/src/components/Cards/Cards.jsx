@@ -21,11 +21,7 @@ const Cards = () => {
         setCurrentPage(pageNumber); //actualiza el estado con el numero de la pagina
         window.localStorage.setItem('currentPage', pageNumber) //para que la página actual se conserve
     };
-
-
-    if (!Array.isArray(allPokemons)) { 
-        return 'No se pudieron cargar los pokemons';
-    }
+    
 
     return (
         <div className={styles.div}>
