@@ -19,7 +19,7 @@ const Home = () => {
             dispatch( getAllPokemons(), getAllTypes() ) //cuando se monta el componente hace el dispatch de la action para traer todos los pokemons.
             dispatch(getAllTypes()) // cuando se monta el componente despacha la action para traer todos los tipos de pokemons.
         }
-    }, [allPokemons]) //array de dependencia para que quede atento a los cambios del estado allPokemons.
+    }, [dispatch, allPokemons]) //array de dependencia para que quede atento a los cambios del estado allPokemons.
 
     return ( 
         <div className={styles.divHome}>

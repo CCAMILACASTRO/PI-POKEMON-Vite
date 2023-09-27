@@ -41,7 +41,7 @@ const Form = () => {
         setErrors(validations({  //La funcion setErrors se guarda el valor de la ejecucion de la funcion validation que es un objeto.
             ...form,  //A validation le paso un objeto donde guarda una copia del estado y el valor de lo que pone el usuario en el input.
             [event.target.name]: event.target.value, //Si llega a haber algun cambio, le aviso que se tiene que modificar alguna de las propiedades
-        }, errors))  // El objeto que retorna la funcion validation, se guarda en el estado errors y es lo que permite mostrar luego el mensaje de error.
+        }, event.target.name, errors))  // El objeto que retorna la funcion validation, se guarda en el estado errors y es lo que permite mostrar luego el mensaje de error.
     }
 
 
