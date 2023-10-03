@@ -14,11 +14,10 @@ function App() {
   const { pathname } = useLocation();
 
   return (
-    //Rutas + renderizado condicional --> Si el pathname es diferente a '/' que muestre la Nav.
+    
     <div className= {styles.divApp}>
       
       {pathname !== "/" && <Nav  />} 
-      
       
       <Routes>
 

@@ -13,17 +13,17 @@ import {
     FILTER_TYPE } from './action-types';
 
 
-const URL_POKEMON = 'http://localhost:3001/pokemon'; //url del servidor
-const URL_TYPE = 'http://localhost:3001/type'; //url del servidor
+const URL_POKEMON = 'http://localhost:3001/pokemon'; 
+const URL_TYPE = 'http://localhost:3001/type'; 
 
 
 //Obtener todos los pokemones:
 export const getAllPokemons = () => {
     return async (dispatch) => {
         try {
-            const allPokemons = await axios.get(`${URL_POKEMON}`); //obtener los datos de la API.
+            const allPokemons = await axios.get(`${URL_POKEMON}`); 
 
-            return dispatch ({ type: GET_POKEMONS, payload: allPokemons.data }); //se despacha el objeto al reducer para actualizar el estado global.
+            return dispatch ({ type: GET_POKEMONS, payload: allPokemons.data }); 
             
         } catch (error) {
             return response.status(404).json({error: error.message})
@@ -37,9 +37,9 @@ export const getPokemonByID = (id) => {
     return async (dispatch) => {
         try {
             
-            const pokemonId = await axios.get(`${URL_POKEMON}/${id}`); //obtener los datos de un pokemon especifico de la API.
+            const pokemonId = await axios.get(`${URL_POKEMON}/${id}`); 
 
-            return dispatch ({ type: GET_POKEMON_ID, payload: pokemonId.data }) //se despacha el objeto al reducer para actualizar el estado global.
+            return dispatch ({ type: GET_POKEMON_ID, payload: pokemonId.data }) 
 
         } catch (error) {
             return response.status(404).json({error: error.message})
@@ -80,9 +80,9 @@ export const getAllTypes = () => {
     return async (dispatch) => {
         try {
 
-            const allTypes = await axios.get(`${URL_TYPE}`) //obtiene todos los tipos de pokemon de la api.
+            const allTypes = await axios.get(`${URL_TYPE}`) 
             
-            return dispatch({ type: GET_ALL_TYPES, payload: allTypes.data }); //se despacha el objeto al reducer para actualizar el estado global.
+            return dispatch({ type: GET_ALL_TYPES, payload: allTypes.data }); 
             
         } catch (error) {
             return response.status(404).json({error: error.message})            
@@ -96,9 +96,9 @@ export const createPokemon = (createPokemon) => {
     return async (dispatch) => {
         try {
 
-            const newPokemon = await axios.post(`${URL_POKEMON}`, createPokemon) //crea un pokemon a la url de la api.
+            const newPokemon = await axios.post(`${URL_POKEMON}`, createPokemon) 
             
-            return dispatch({ type: CREATE_POKEMON, payload: newPokemon.data}) //se despacha el objeto al reducer para actualizar el estado global.
+            return dispatch({ type: CREATE_POKEMON, payload: newPokemon.data}) 
             
             
         } catch (error) {
@@ -133,5 +133,7 @@ export const sortByAttack = (attack) => {
 export const filterType = (types) => {
     return ({ type: FILTER_TYPE, payload: types})  
 }
+
+
 
 

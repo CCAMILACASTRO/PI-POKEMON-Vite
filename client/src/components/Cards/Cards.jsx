@@ -9,16 +9,16 @@ import Pagination from '../Pagination/Pagination';
 const Cards = () => {
 
     const allPokemons = useSelector((state) => state.allPokemons) 
-    const [currentPage, setCurrentPage] = useState(window.localStorage.getItem('currentPage')); //estado local con el valor de currentPage
+    const [currentPage, setCurrentPage] = useState(window.localStorage.getItem('currentPage')); 
     const [pokemonsPage, setPokemonsPage] = useState(12) 
     
-    const lastPokemon = currentPage * pokemonsPage; //último Pokémon de la pagina actual.
-    const firstPokemon = lastPokemon - pokemonsPage; //primera pokemon en funcion de la pagina actual y la cantidad de pokemons.
-    const currentPokemons = Array.from(allPokemons).slice(firstPokemon, lastPokemon); //pokemones de la pag actual
+    const lastPokemon = currentPage * pokemonsPage; 
+    const firstPokemon = lastPokemon - pokemonsPage; 
+    const currentPokemons = Array.from(allPokemons).slice(firstPokemon, lastPokemon); 
     
 
     const pagination = (pageNumber) => { //cambiar la pagina actual
-        setCurrentPage(pageNumber); //actualiza el estado con el numero de la pagina
+        setCurrentPage(pageNumber); 
         window.localStorage.setItem('currentPage', pageNumber) //para que la página actual se conserve
     };
     
@@ -29,7 +29,6 @@ const Cards = () => {
                 pokemonsPage={pokemonsPage} 
                 allPokemons={allPokemons.length} 
                 pagination={pagination} 
-                //toma un número de página como argumento para actualizar el estado del componente principal que renderiza la lista de Pokémon.
             />
 
             <div className={styles.divCards}>

@@ -97,7 +97,7 @@ const reducer = (state= initialState, action) => {
         case SORT_NAME:
             const nameCopy = [...state.allPokemons];
             if (action.payload === 'ALL') {
-                return { ...state, allPokemons: state.pokemon, // Usar los pokemons originales sin ordenar
+                return { ...state, allPokemons: state.pokemon, 
                 };
 
             } else { 
@@ -116,13 +116,13 @@ const reducer = (state= initialState, action) => {
             const attackCopy = [...state.allPokemons];
             
             if (action.payload === 'ALL') {
-                return { ...state, allPokemons: state.pokemon, // Usar los pokemons originales sin ordenar
+                return { ...state, allPokemons: state.pokemon, 
                 };
 
             }  else {
                 let attackSort = attackCopy.sort((a, b) => {
-                    if (a.attack < b.attack) {  return action.payload === 'ASD' ? -1 : 1; } //menor a mayor ataque / + debil a + fuerte
-                    if (a.attack > b.attack) {  return action.payload === 'DSC' ? -1 : 1;} //mayor a menor ataque / + fuerte a + debil
+                    if (a.attack < b.attack) {  return action.payload === 'ASD' ? -1 : 1; } 
+                    if (a.attack > b.attack) {  return action.payload === 'DSC' ? -1 : 1;} 
                     return 0;
                 });
                 return {

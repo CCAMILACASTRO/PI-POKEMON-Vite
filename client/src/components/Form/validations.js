@@ -88,15 +88,14 @@ const validations = (form, name,  errors) => {
     }
 
     // Tipo:
-    //if(name === 'types'){
-        if (form.types.length === 0) {
-            errors.types = 'Debe seleccionar al menos un tipo'
-        } else if (form.types.length >= 2) {
-            errors.types = 'No puede seleccionar más de 2 tipos'
-        } else {
-            errors.types = '';
-        } 
-    //}
+    
+    if (form.types.length === 0) {
+        errors.types = 'Debe seleccionar al menos un tipo'
+    } else if (form.types.length >= 2) {
+        errors.types = 'No puede seleccionar más de 2 tipos'
+    } else {
+        errors.types = '';
+    } 
 
     return errors;
 }

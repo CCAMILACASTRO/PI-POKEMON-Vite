@@ -83,6 +83,7 @@ const Form = () => {
         }
     }
 
+
     const handleTypeChange = (event) => { //permite agregar tipos de pokemones
         const selectedType = event.target.value;
         if (!form.types.includes(selectedType) && form.types.length < 2) { //verifica si el tipo de Pokémon seleccionado no está incluido y si es menor a 2
@@ -108,88 +109,101 @@ const Form = () => {
             <h2>Crea tu propio Pokemon: </h2>
 
             <form className={styles.formDiv} onSubmit={handleSubmit} >
-            <div className={styles.divInputsForm}>
-            
                 <div className={styles.divInputsForm}>
-                    <label htmlFor="name">Nombre: </label>
-                    <input type="text" name="name" onChange={handleChange} placeholder="Nombre" value={form.name.toLowerCase()}/>
-                    {errors.name && <p className={styles.pErrors}> {errors.name} </p>}
+                
+                    <div className={styles.divInputsForm}>
+                        <label htmlFor="name">Nombre: </label>
+                        <input type="text" name="name" onChange={handleChange} placeholder="Nombre" value={form.name.toLowerCase()}/>
+                        {errors.name && <p className={styles.pErrors}> {errors.name} </p>}
+                    </div>
+
+                    <div className={styles.divInputsForm}>
+                        <label htmlFor="image">Imágen: </label>
+                        <input type="text" name="image" onChange={handleChange} placeholder="Imagen" value={form.image} />
+                        {errors.image && <p className={styles.pErrors}> {errors.image} </p>}
+                    </div>
+
+                    <div className={styles.divInputsForm}>
+                        <label htmlFor="life">Vida: </label>
+                        <input type="number" name="hp" onChange={handleChange} placeholder="Vida" value={form.hp} />
+                        {errors.hp && <p className={styles.pErrors}> {errors.hp} </p>}
+                    </div>
+
+                    <div className={styles.divInputsForm}>
+                        <label htmlFor="attack">Ataque: </label>
+                        <input type="number" name="attack" onChange={handleChange} placeholder="Ataque" value={form.attack} />
+                        {errors.attack && <p className={styles.pErrors}> {errors.attack} </p>}
+                    </div>
+
+                    <div className={styles.divInputsForm}>
+                        <label htmlFor="defense">Defensa: </label>
+                        <input type="number" name="defense" onChange={handleChange} placeholder="Defensa" value={form.defense} />
+                        {errors.defense && <p className={styles.pErrors}> {errors.defense} </p>}
+                    </div>
+
+                    <div className={styles.divInputsForm}>
+                    <label htmlFor="speed">Velocidad: </label>
+                        <input type="number" name="speed" onChange={handleChange} placeholder="Velocidad" value={form.speed} />
+                        {errors.speed && <p className={styles.pErrors}> {errors.speed} </p>}
+                    </div>
+
+                    <div className={styles.divInputsForm}>
+                        <label htmlFor="height">Altura: </label>
+                        <input type="number" name="height" onChange={handleChange} placeholder="Altura" value={form.height} />
+                        {errors.height && <p className={styles.pErrors}> {errors.height} </p>}
+                    </div>
+
+                    <div className={styles.divInputsForm}>
+                        <label htmlFor="weight">Peso: </label>
+                        <input type="number" name="weight" onChange={handleChange} placeholder="Peso" value={form.weight} />
+                        {errors.weight && <p className={styles.pErrors}> {errors.weight} </p>}
+                    </div>
+
                 </div>
 
-                <div className={styles.divInputsForm}>
-                    <label htmlFor="image">Imágen: </label>
-                    <input type="text" name="image" onChange={handleChange} placeholder="Imagen" value={form.image} />
-                    {errors.image && <p className={styles.pErrors}> {errors.image} </p>}
-                </div>
 
-                <div className={styles.divInputsForm}>
-                    <label htmlFor="life">Vida: </label>
-                    <input type="number" name="hp" onChange={handleChange} placeholder="Vida" value={form.hp} />
-                    {errors.hp && <p className={styles.pErrors}> {errors.hp} </p>}
-                </div>
-
-                <div className={styles.divInputsForm}>
-                    <label htmlFor="attack">Ataque: </label>
-                    <input type="number" name="attack" onChange={handleChange} placeholder="Ataque" value={form.attack} />
-                    {errors.attack && <p className={styles.pErrors}> {errors.attack} </p>}
-                </div>
-
-                <div className={styles.divInputsForm}>
-                    <label htmlFor="defense">Defensa: </label>
-                    <input type="number" name="defense" onChange={handleChange} placeholder="Defensa" value={form.defense} />
-                    {errors.defense && <p className={styles.pErrors}> {errors.defense} </p>}
-                </div>
-
-                <div className={styles.divInputsForm}>
-                <label htmlFor="speed">Velocidad: </label>
-                    <input type="number" name="speed" onChange={handleChange} placeholder="Velocidad" value={form.speed} />
-                    {errors.speed && <p className={styles.pErrors}> {errors.speed} </p>}
-                </div>
-
-                <div className={styles.divInputsForm}>
-                    <label htmlFor="height">Altura: </label>
-                    <input type="number" name="height" onChange={handleChange} placeholder="Altura" value={form.height} />
-                    {errors.height && <p className={styles.pErrors}> {errors.height} </p>}
-                </div>
-
-                <div className={styles.divInputsForm}>
-                    <label htmlFor="weight">Peso: </label>
-                    <input type="number" name="weight" onChange={handleChange} placeholder="Peso" value={form.weight} />
-                    {errors.weight && <p className={styles.pErrors}> {errors.weight} </p>}
-                </div>
-
-            </div>
-
-
-            <div className={styles.divSelectTypes}>
-                <h3 className={styles.tituloTipos}>Seleccionar Tipos:</h3>
-                    
-                    <div className={styles.boxTipos}>
-                        {types.map((type) => (
-                            <div key={type.id} className="checkbox-seleccion">
-                                <div className={styles.divCheck}>
-                                    <input type="checkbox" value={type.name} onChange={handleTypeChange} checked={form.types.includes(type.name)}/>
-                                    {type.name}
+                <div className={styles.divSelectTypes}>
+                    <h3 className={styles.tituloTipos}>Seleccionar Tipos:</h3>
+                        
+                        <div className={styles.boxTipos}>
+                            {types.map((type) => (
+                                <div key={type.id} className="checkbox-seleccion">
+                                    <div className={styles.divCheck}>
+                                        <input type="checkbox" value={type.name} onChange={handleTypeChange} checked={form.types.includes(type.name)}/>
+                                        {type.name}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
 
-                    <div className={styles.divSeleccionados}>
-                        {form.types.map((type) => (
-                            <div key={type} className={styles.divSelecc}>
-                                <span>{types.find(t => t.name === type)?.name}</span>
-                                <button className={styles.buttonSeleccion} type='button' name='types' onClick={() => handleDelete(type)} > X </button>
-                            </div>
-                        ))}
-                    </div>
-                    {errors.types && <p className={styles.pErrors}> {errors.types} </p>}
+                        <div className={styles.divSeleccionados}>
+                            {form.types.map((type) => (
+                                <div key={type} className={styles.divSelecc}>
+                                    <span>{types.find(t => t.name === type)?.name}</span>
+                                    <button className={styles.buttonSeleccion} type='button' name='types' onClick={() => handleDelete(type)} > X </button>
+                                </div>
+                            ))}
+                        </div>
+                        {errors.types && <p className={styles.pErrors}> {errors.types} </p>}
 
-                    <button type="submit" className={styles.buttonForm} 
-                    disabled={!form.name || !form.image || !form.types || !form.hp || !form.attack || !form.defense }>
-                        Crear Pokemon
-                    </button>
+                        <button type="submit" className={styles.buttonForm} 
+                        disabled={!form.name || !form.image || !form.types || !form.hp || !form.attack || !form.defense }>
+                            Crear Pokemon
+                        </button>
 
+                </div>
+
+                <div className={styles.divPreview}>
+                    
+                    <img src={form.image} alt={form.image} className={styles.imgPreview}/>
+                    <p>Nombre: {form.name.toUpperCase()}</p>
+                    <p>Tipos: {form.types[0]} { form.types[1]}</p>
+                    <p>Vida: {form.hp}</p>
+                    <p>Ataque: {form.attack}</p>
+                    <p>Defensa: {form.defense}</p>
+                    <p>Velocidad: {form.speed}</p>
+                    <p>Altura: {form.height}</p>
+                    <p>Peso: {form.weight}</p>
                 </div>
             </form>
         </div>
