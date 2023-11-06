@@ -1,4 +1,7 @@
-![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
+<div align="left">
+    <img src="https://www.mundodeportivo.com/alfabeta/hero/2023/05/algunos-de-los-pokemon-mas-extranos-que-ha-habido-en-la-historia-de-los-videojuegos.1682875611.3106.jpg?width=1200&aspect_ratio=16:9"  width="1200" height="400"> 
+</div >
+
 
 # **POKEMON** | Proyecto Individual
 
