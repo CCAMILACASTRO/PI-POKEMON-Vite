@@ -14,8 +14,8 @@ const Home = () => {
 
     // Ciclo de vida al componente
     useEffect (() => { 
-        window.localStorage.setItem('currentPage', 1) //guardar la pagina donde se encuentra el usuario.
         if(allPokemons.length === 0){ 
+            window.localStorage.setItem('currentPage', 1) //guardar la pagina donde se encuentra el usuario.
             dispatch( getAllPokemons() ) 
             dispatch(getAllTypes()) 
         }

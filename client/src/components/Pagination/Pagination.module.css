@@ -44,3 +44,9 @@
     font-weight: bold;
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
 }
+
+.active {
+    background-color: rgb(41, 184, 136);
+    color: white; 
+   
+  }
