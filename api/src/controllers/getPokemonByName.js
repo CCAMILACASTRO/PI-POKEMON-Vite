@@ -6,13 +6,13 @@ const URL = 'https://pokeapi.co/api/v2/pokemon/'
 const getPokemonApiByName = async (name) => {
 
     try{
-        const pokemonsApiName = await axios.get(`${URL}/${name}`.toLowerCase()); //insensible a mayusculas o minusculas
+        const pokemonsApiName = await axios.get(`${URL}/${name}`.toLowerCase()); 
 
         if (pokemonsApiName) { 
 
             let pokemon = pokemonsApiName; 
 
-            return [{ //retorna el pokemon buscado con los datos especificos.
+            return [{ 
                 id: pokemon.data.id,
                 name: pokemon.data.name,
                 image: pokemon.data.sprites.other.dream_world.front_default,
@@ -36,12 +36,12 @@ const getPokemonApiByName = async (name) => {
 
 const getPokemonDbByName = async(name) => {
     try{
-        const pokemonDbName = await Pokemon.findAll({ //busco en el modelo Pokemon por nombre
+        const pokemonDbName = await Pokemon.findAll({ 
             where: {
-                name: name.toLowerCase(), // insensible a mayusculas y minusculas.
+                name: name.toLowerCase(), 
               },
               include: {
-                attributes: ["name"], //incluye informacion del modelo Type.
+                attributes: ["name"], 
                 model: Type,
                 through: {
                     attributes: [],
@@ -50,7 +50,7 @@ const getPokemonDbByName = async(name) => {
               },
         });
 
-        return pokemonDbName; //retorna el pokemon encontrado junto con el tipo.
+        return pokemonDbName; 
     } catch(error){  
         return null;
     }

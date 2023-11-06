@@ -7,11 +7,11 @@ const getAllTypes = async () => {
     try {
         const response = await axios.get(`${URL}`);
         
-        const typesApi = response.data.results.map((type) => type.name); //mapeo y de cada tipo tomo la prop name.
+        const typesApi = response.data.results.map((type) => type.name); 
         
-        const types = await Promise.all( // detalles individuales de cada tipo de pokemon.
-          typesApi.map(async (typeName) => { //recorro el array de tipos.
-            const [type] = await Type.findOrCreate({ //busca o crea con estos atributos
+        const types = await Promise.all( 
+          typesApi.map(async (typeName) => { 
+            const [type] = await Type.findOrCreate({ 
               where: { name: typeName },
               defaults: typeName,
             });

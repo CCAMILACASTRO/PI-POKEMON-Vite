@@ -14,7 +14,7 @@ pokemonRouter.get("/", async (req, res) => {
 
     if (name) { 
 
-      let pokemonName = await getPokemonApiByName(name); //busca en la API
+      let pokemonName = await getPokemonApiByName(name); 
 
       if (pokemonName.error) { 
         pokemonName = await getPokemonDbByName(name);
@@ -26,7 +26,7 @@ pokemonRouter.get("/", async (req, res) => {
         res.status(404).json({message: `No se encontró un Pokémon con el nombre: ${name}`});
       }
 
-    } else { //si no envia un name ---> devuelve todos.
+    } else { 
       let allPokemons = await getAllPokemons();
       return res.status(200).send(allPokemons);
     }
@@ -44,7 +44,7 @@ pokemonRouter.get("/:id", async (req, res) => {
 
     let pokemonId = null;
 
-    if (isNaN(id)) {  // verifica si id es numero...
+    if (isNaN(id)) { 
       pokemonId = await getPokemonsDbById(id); 
     } else {
       pokemonId = await getPokemonsApiById(id); 
@@ -68,7 +68,7 @@ pokemonRouter.post("/", async (req, res) => {
   try {
     const createPokemon = req.body; 
 
-    const newPokemon = await postPokemon(createPokemon); //guardar los datos del nuevo pokemon
+    const newPokemon = await postPokemon(createPokemon); 
     
     if (newPokemon.error) return res.status(404).json(error.message);
 

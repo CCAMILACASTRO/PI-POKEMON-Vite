@@ -1,13 +1,13 @@
 const { Pokemon, Type } = require('../db')
 
-const postPokemon = async (createPokemon) => {  //objeto con los datos del pokemon creado en el formulario. 
+const postPokemon = async (createPokemon) => {   
 
     
     const { name, image, types, hp, attack, defense, speed, height, weight, createdInDb } = createPokemon;
     
     let typesDb = await Type.findOne({where: { name: types}})
 
-    if (!name || !image || !types || !hp || !attack || !defense) { //props obligatorias
+    if (!name || !image || !types || !hp || !attack || !defense) { 
         throw Error  ('Faltan datos');
         
     } else if (!typesDb) {
@@ -18,20 +18,20 @@ const postPokemon = async (createPokemon) => {  //objeto con los datos del pokem
         where: { name: name }
     });
 
-    if (pokemonExist) {   //verifica si el pokemon existe en la base de datos.
+    if (pokemonExist) {   
 
         throw Error ('El pokemón ya existe, elija otro nombre.');
     }
 
     const pokemon = await Pokemon.create({ name, image, hp, attack, defense, speed, height, weight, createdInDb }); 
 
-    let addTypes = await Type.findAll({ //Busca todos los tipos de pokemones en el modelo Type.
+    let addTypes = await Type.findAll({ 
         where: { name: types }
     });
 
-    await pokemon.addTypes(addTypes); // Relacion Pokemon y Type
+    await pokemon.addTypes(addTypes); 
 
-    let newPokemon = await Pokemon.findByPk(pokemon.id, { //Busca el pokemon x id + nombre del tipo 
+    let newPokemon = await Pokemon.findByPk(pokemon.id, { 
         include: {
             model: Type,
             attributes: ["name"],

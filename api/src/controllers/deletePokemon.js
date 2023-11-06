@@ -3,7 +3,7 @@ const { Pokemon } = require('../db')
 
 const deletePokemon = async(id) => { // eliminar un pokemon de la base de datos.
 
-    if(id.length <= 4 ) { //Me aseguro que no sea un id que provenga desde la API.
+    if(id.length <= 4 ) { 
         throw Error('No se puede eliminar un Pokemon de la API')
 
     } else { 

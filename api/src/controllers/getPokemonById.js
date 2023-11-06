@@ -13,10 +13,10 @@ const getPokemonsApiById = async (id) => {
            
             let pokemon = pokemonApiId; 
 
-            return { //objeto con los datos especificos del pokemon.
+            return { 
                 id: pokemon.data.id,
                 name: pokemon.data.name,
-                image: pokemon.data.sprites.other.dream_world.front_default,  // url imagen
+                image: pokemon.data.sprites.other.dream_world.front_default,  
                 Types: pokemon.data.types.map((pokemon) => { return {name: pokemon.type.name}}),
                 hp: pokemon.data.stats[0].base_stat,
                 attack: pokemon.data.stats[1].base_stat,
@@ -39,7 +39,7 @@ const getPokemonsApiById = async (id) => {
 const getPokemonsDbById = async(id) => {
 
     try {
-        const pokemonDbId = await Pokemon.findOne({   //Busca por id y si y por id del modelo Type.
+        const pokemonDbId = await Pokemon.findOne({   
             where: { id: id},
             include: [{ 
                 attributes: ['name'],
@@ -49,7 +49,7 @@ const getPokemonsDbById = async(id) => {
                 }
             }]
         })
-        return pokemonDbId; //retorna el pokemon encontrado + tipo
+        return pokemonDbId; 
 
     } catch (error) {
         return null;

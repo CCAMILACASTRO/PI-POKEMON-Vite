@@ -9,17 +9,17 @@ const getPokemonsApi = async () => {
 
     try {
         const response = await axios.get(`${URL}?limit=151`); //1281 
-        const results = response.data.results // array de objetos
+        const results = response.data.results 
 
-        const arrayPromises = results.map((promesa) => axios.get(promesa.url)); // detalles individuales de cada pokemon.
+        const arrayPromises = results.map((promesa) => axios.get(promesa.url)); 
 
-        const pokemons = await Promise.all(arrayPromises); //espera que se completen todas las solicitudes individuales.
+        const pokemons = await Promise.all(arrayPromises);
 
         pokemonsApi.push(
             ...pokemons.map((pokemon) => ({ 
                 id: pokemon.data.id,
                 name: pokemon.data.name,
-                image: pokemon.data.sprites.other.dream_world.front_default, // url imagen
+                image: pokemon.data.sprites.other.dream_world.front_default, 
                 Types: pokemon.data.types.map((pokemon) => { return {name: pokemon.type.name}}),
                 hp: pokemon.data.stats[0].base_stat,
                 attack: pokemon.data.stats[1].base_stat,
@@ -33,7 +33,7 @@ const getPokemonsApi = async () => {
         return error;
     }
 
-    return pokemonsApi; //retorna todos los pokemones de la api.
+    return pokemonsApi; 
 }
 
 
@@ -50,7 +50,7 @@ const getPokemonsDb = async () => {
             }]
         });
 
-        return pokemonsDb; //retorna todos los pokemones de la db.
+        return pokemonsDb; 
     } catch(error){ 
         return error;
     }
@@ -62,9 +62,9 @@ const getAllPokemons = async () => {
         let apiPokemons = await getPokemonsApi(); 
         let dbPokemons = await getPokemonsDb(); 
         return apiPokemons.concat(dbPokemons); //retorna pokemons api + pokemons db.
-      } catch (error) { 
+    } catch (error) { 
         return error;
-      }
+    }
 };
 
 module.exports = { getAllPokemons }
